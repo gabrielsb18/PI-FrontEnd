@@ -34,7 +34,7 @@ export default createGlobalStyle`
 
     strong{
         font-weight: 700;
-        color: ${({theme}) => theme.COLORS.YELLOW_DEFAULT};
+        color: ${({ theme }) => theme.COLORS.YELLOW_DEFAULT};
     }
 
 `;
