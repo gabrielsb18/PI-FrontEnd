@@ -1,0 +1,9 @@
+//DEFININDO PALETA DE CORES DA NOSSA APLICAÇÃO
+
+export default {
+    COLORS: {
+        BACKGROUND_COLOR: "#E4E4E4",
+        TEXT_COLOR: "#000",
+        YELLOW_DEFAULT: "#FFD735"
+    }
+}
