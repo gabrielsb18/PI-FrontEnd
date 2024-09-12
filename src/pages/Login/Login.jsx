@@ -1,5 +1,6 @@
 import {ContainerBody, Title, FormContainer } from '../Login/Login.style'
 import { PanelLogo } from '../../components/PaneLogo/panelLogo'
+import Input from "../../components/Input/Input"
 
 export default function Login (){
     return (
@@ -12,10 +13,8 @@ export default function Login (){
 
             <form>
                 <div>
-                    <label>Email</label>
-
-
-                    <label>Senha</label>
+                    <Input nome="Email" />
+                    <Input nome="Senha" />
                 </div>
                 <div>
                 </div>
