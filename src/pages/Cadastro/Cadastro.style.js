@@ -4,7 +4,7 @@ export const ContainerBody = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: row;
+    flex-direction: row-reverse;
     height: 100vh;
 `;
 
