@@ -1,7 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 
 export default createGlobalStyle`
-    //RESETANDO ESTILOS PADRÕES DO NAVEGADOR
+
     * {
         margin: 0;
         padding: 0;
@@ -12,23 +12,30 @@ export default createGlobalStyle`
         background-color: ${({ theme }) => theme.COLORS.WHITE};
         color: ${({ theme }) => theme.COLORS.BLACK};
 
-        //FONTE SUAVE
         -webkit-font-smoothing: antialiased;
     }
 
-    //DEFININDO FONTE PADRÃO
     body, input, button, textarea, select, option{
         font-family: "Inter", sans-serif;
         outline: none;
     }
 
-    //OUTROS ESTILOS
-    button {
+    button, a {
         cursor: pointer;
         transition: filter 0.2s;
     }
 
+    button:hover a:hover {
+        filter: brightness(0.8);
+    }
+
+
     a {
+        text-decoration: none;
+    }
+
+    a:visited{
+        color:black;
         text-decoration: none;
     }
 

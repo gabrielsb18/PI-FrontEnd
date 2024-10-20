@@ -3,10 +3,14 @@ import styled from "styled-components";
 export const InputWrap = styled.div`
     width: 100%;
     display: flex;
-    align-item: center;
+    align-items: center;
     justify-content: center;
     border-radius: 8px;
     background: #E4E4E4;
+
+    > svg {
+        margin-left: 14px;
+    }
 
     >input{
         height: 54px;
