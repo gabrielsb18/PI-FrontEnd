@@ -34,6 +34,11 @@ export default createGlobalStyle`
         text-decoration: none;
     }
 
+    a:visited{
+        color:black;
+        text-decoration: none;
+    }
+
     strong{
         font-weight: 700;
         color: ${({ theme }) => theme.COLORS.YELLOW_DEFAULT};
