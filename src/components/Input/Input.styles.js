@@ -8,6 +8,10 @@ export const InputWrap = styled.div`
     border-radius: 8px;
     background: #E4E4E4;
 
+    > svg {
+        margin-left: 14px;
+    }
+
     >input{
         height: 54px;
         width: 100%;
