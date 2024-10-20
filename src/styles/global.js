@@ -20,7 +20,7 @@ export default createGlobalStyle`
         outline: none;
     }
 
-    button a {
+    button, a {
         cursor: pointer;
         transition: filter 0.2s;
     }
