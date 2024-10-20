@@ -1,7 +1,9 @@
+import HeaderNav from "../../components/Header/Header";
+
 export default function Home (){
     return(
         <>
-        <h1>Teste</h1>
+            <HeaderNav/>
         </>
     );
 };
