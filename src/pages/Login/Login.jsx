@@ -3,6 +3,7 @@ import { PanelLogo } from '../../components/PaneLogo/panelLogo'
 import Input from "../../components/Input/Input"
 import Button from '../../components/Button/Button'
 import { useNavigate } from 'react-router-dom';
+import { MdOutlineEmail,MdOutlineLock } from "react-icons/md";
 
 export default function Login (){
     const navigate = useNavigate();
@@ -17,8 +18,16 @@ export default function Login (){
 
                 <form>
                     <div>
-                        <Input nome="Email" />
-                        <Input nome="Senha" />
+                        <Input
+                            icon={MdOutlineEmail} 
+                            nome="Email"
+                            placeholder="Digite seu email"
+                        />
+                        <Input 
+                            icon={MdOutlineLock}
+                            nome="Senha"
+                            placeholder="Digite sua senha"
+                        />
                     </div>
                     <div>
                         <Button estilo="flat" name="Entrar"/>
