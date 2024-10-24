@@ -28,6 +28,7 @@ export default function Home (){
                     <Tasks>
                         <h1>Suas Tarefas</h1>
                         <AddTask/>
+                        <Select />
                     </Tasks>
                 </HeaderTasks>
             </ContainerGraphics>
