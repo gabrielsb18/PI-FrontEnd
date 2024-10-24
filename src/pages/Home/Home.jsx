@@ -1,5 +1,6 @@
 import AddTask from "../../components/AddTask/AddTask";
 import HeaderNav from "../../components/Header/Header";
+import Select from "../../components/Select/Select";
 import { ContainerBody, Main, ContainerGraphics, ContentGraphicsOne, ContentGraphicTwo, HeaderTitle, ContentGraphicTree, HeaderTasks, Tasks } from "./home.style";
 
 
@@ -28,6 +29,7 @@ export default function Home (){
                     <Tasks>
                         <h1>Suas Tarefas</h1>
                         <AddTask/>
+                        <Select />
                     </Tasks>
                 </HeaderTasks>
             </ContainerGraphics>
