@@ -47,6 +47,29 @@ export const ContainerGraphics = styled.div`
     width:100%;
 `;
 
+export const ContentGraphicsOne = styled.div`
+    display:flex;
+    flex-direction:column;
+    justify-content: space-around;
+    grid-area: MonthsCompletedTasks;
+    border: 1px solid #979797;
+    padding:20px;
+    border-radius:10px;
+
+    > p {
+        font-size:16px;
+        color: #afafaf;
+        font-weight:300;
+    }
+
+    > h1 {
+        margin-top: 20px;
+        color: #35FF89;
+        font-size:64px;
+        
+    }
+`;
+
 export const ContentGraphicTwo = styled.div`
     display:flex;
     flex-direction:column;
@@ -68,4 +91,60 @@ export const ContentGraphicTwo = styled.div`
         color: #ffd735;
         font-size:64px
     }
+`;
+
+export const ContentGraphicTree = styled.div`
+    display:flex;
+    flex-direction:column;
+    justify-content: space-around;
+    grid-area: ContentGraphicTree;
+    border: 1px solid #979797;
+    padding:20px;
+    border-radius:10px;
+
+    > p {
+        font-size:16px;
+        color: #35FF89;
+        font-weight:300;
+
+        > strong {
+        margin-top: 20px;
+        color: #35FF89;
+        }
+    }
+
+    > h1 {
+        margin-top: 20px;
+        color: #35FF89;
+        font-size:64px;
+        
+    }
+`;
+
+export const HeaderTasks = styled.div`
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+    width: 100%;
+`;
+
+export const Tasks = styled.div`
+    display:flex;
+    gap: 25px;
+    > h1{
+        color: #666;
+        font-size: 32px;
+        font-weight:400;
+    }
+
+`;
+
+export const ContainerTasks = styled.div`
+    display:grid;
+    grid-template-columns: minmax(280px,3fr) minmax(160px, 2fr) minmax(200px, 2fr);
+    grid-template-rows: minmax(200px, auto);
+    grid-template-areas: "MonthsCompletedTasks ContentGraphicTwo ContentGraphicTree";
+    gap:18px;
+    justify-content:flex-start;
+    width:100%;
 `;
