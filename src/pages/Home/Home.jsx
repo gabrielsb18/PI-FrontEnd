@@ -1,7 +1,7 @@
 import AddTask from "../../components/AddTask/AddTask";
 import HeaderNav from "../../components/Header/Header";
 
-import { ContainerBody, Main, ContainerGraphics, ContentGraphicsOne, ContentGraphicTwo, HeaderTitle, ContentGraphicTree, HeaderTasks, Tasks } from "./home.style";
+import { ContainerBody, Main, ContainerGraphics, ContentGraphicsOne, ContentGraphicTwo, HeaderTitle, ContentGraphicTree, HeaderTasks, Tasks } from "./Home.style";
 
 export default function Home (){
     return(
