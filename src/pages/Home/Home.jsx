@@ -1,6 +1,5 @@
 import HeaderNav from "../../components/Header/Header";
-import { ContainerBody, Main, ContainerGraphics, ContentGraphicTwo, HeaderTitle } from "./home.style";
-
+import { ContainerBody, Main, ContainerGraphics, ContentGraphicTwo, HeaderTitle } from "./Home.style";
 
 export default function Home (){
     return(
