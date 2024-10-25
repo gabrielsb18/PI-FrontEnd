@@ -1,11 +1,12 @@
-import { Button } from "./Select.style"
+import { ButtonSelect } from "./Select.style"
 
 function Select(){
     return(
-        <Button>
-            Selecionar
-        </Button>
-    )
+        <ButtonSelect>
+            <option>Concluídas</option>
+            <option>Pendentes</option>
+        </ButtonSelect>
+      )
 }
 
-export default Select
+export default Select;
