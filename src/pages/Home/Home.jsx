@@ -1,7 +1,8 @@
 import AddTask from "../../components/AddTask/AddTask";
 import HeaderNav from "../../components/Header/Header";
+import Select from "../../components/Select/Select";
 
-import { ContainerBody, Main, ContainerGraphics, ContentGraphicsOne, ContentGraphicTwo, HeaderTitle, ContentGraphicTree, HeaderTasks, Tasks } from "./Home.style";
+import { ContainerBody, Main, ContainerGraphics, ContentGraphicsOne, ContentGraphicTwo, HeaderTitle, ContentGraphicTree, HeaderTasks, Tasks, ContainerCardsTasks } from "./Home.style";
 
 export default function Home (){
     return(
@@ -24,14 +25,19 @@ export default function Home (){
                     <p>Tarefas <br /> <strong>Concluídas</strong></p>
                     <h1>+80</h1>
                 </ContentGraphicTree>
-                <HeaderTasks>
-                    <Tasks>
-                        <h1>Suas Tarefas</h1>
-                        <AddTask/>
-                        <Select />
-                    </Tasks>
-                </HeaderTasks>
             </ContainerGraphics>
+            <HeaderTasks>
+                <Tasks>
+                    <h1>Suas Tarefas</h1>
+                    <AddTask/>
+                </Tasks>
+                    <Select />
+            </HeaderTasks>
+            <ContainerCardsTasks>
+                <div>
+                    <p>Qualquer coisa</p>
+                </div>
+            </ContainerCardsTasks>
             </Main>
         </ContainerBody>
     );

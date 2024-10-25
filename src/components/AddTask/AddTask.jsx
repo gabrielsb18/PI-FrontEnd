@@ -4,7 +4,7 @@ function AddTask(){
     return(
         <Button>
             <p>
-            +
+            Adicionar Tarefa
             </p>
         </Button>
     )
