@@ -1,5 +1,6 @@
 import AddTask from "../../components/AddTask/AddTask";
 import HeaderNav from "../../components/Header/Header";
+import Select from "../../components/Select/Select";
 
 import { ContainerBody, Main, ContainerGraphics, ContentGraphicsOne, ContentGraphicTwo, HeaderTitle, ContentGraphicTree, HeaderTasks, Tasks } from "./Home.style";
 

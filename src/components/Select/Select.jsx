@@ -6,7 +6,7 @@ function Select(){
             <option>Concluídas</option>
             <option>Pendentes</option>
         </ButtonSelect>
-    )
+      )
 }
 
-export default Select
+export default Select;
