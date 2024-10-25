@@ -1,15 +1,13 @@
 import styled from "styled-components";
 
-export const Button = styled.button`
-    width:84px;
-    height:42px;
-    background-color: none;
+export const ButtonSelect = styled.select`
+    width:151px;
+    height:53px;
+    background-color: transparent;
     border:1px solid white;
-    font-size:35px;
+    font-size:16px;
+    border-radius: 10px;
     font-weight:500;
-    > p{
-        display:flex;
-        justify-content:center;
-        align-items:center;
-    }
+    padding: 15px 20px 19px 16px;
+    color:white;
 `;
