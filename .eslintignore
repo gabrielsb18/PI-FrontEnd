@@ -1,9 +1,0 @@
-node_modules/
-dist/
-build/
-package-lock.json
-package.json
-README.md
-vite.config.js
-.editorconfig
-.gitignore
