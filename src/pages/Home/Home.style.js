@@ -131,6 +131,8 @@ export const HeaderTasks = styled.div`
 export const Tasks = styled.div`
     display:flex;
     gap: 25px;
+    justify-content:center;
+    align-items:center;
     > h1{
         color: #666;
         font-size: 32px;
@@ -147,4 +149,15 @@ export const ContainerTasks = styled.div`
     gap:18px;
     justify-content:flex-start;
     width:100%;
+`;
+
+export const ContainerCardsTasks = styled.div`
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(272px, 1fr));
+    grid-template-rows: minmax(168px, auto);
+    grid-template-areas: "Task Task Task Task";
+    gap: 1.25rem;
+    width:100%;
+    border-color:red;
+    border:1px solid;
 `;
