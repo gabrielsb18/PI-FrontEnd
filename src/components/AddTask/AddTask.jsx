@@ -3,9 +3,7 @@ import { Button } from "./AddTask.style"
 function AddTask(){
     return(
         <Button>
-            <p>
-            Adicionar Tarefa
-            </p>
+            Nova Tarefa
         </Button>
     )
 }

@@ -1,4 +1,4 @@
-import { CardTasks} from "./CardTasks.styles.js";
+import {CardTasks} from "./CardTasks.style.js";
 
 export function CardTask({title, description, onClick}) {
     return (

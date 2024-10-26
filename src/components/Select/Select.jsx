@@ -1,12 +1,16 @@
 import { ButtonSelect } from "./Select.style"
 
-function Select(){
+function SelectButton(){
     return(
         <ButtonSelect>
-            <option>Concluídas</option>
-            <option>Pendentes</option>
+            <select>
+                <option>Todas</option> 
+                <option>Concluídas</option>
+                <option>Pendentes</option>
+            </select>
+            <img src="/Icon-Arrow.svg" alt="Seta"/>
         </ButtonSelect>
       )
 }
 
-export default Select;
+export default SelectButton;

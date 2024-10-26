@@ -1,17 +1,26 @@
 import styled from "styled-components";
 
 export const Button = styled.button`
-    width:151px;
-    height:53px;
-    background-color: #d9b72d;
-    font-size:16px;
+    width:150px;
+    height:52px;
+
+    border: 1px solid #979797;
     border-radius: 10px;
-    font-weight:500;
-    color:black;
-    border: none;
-    > p{
-        display:flex;
-        justify-content:center;
-        align-items:center;
+    background-color: transparent ;
+    
+    font-size:16px;
+    font-weight:540;
+    color:white;
+
+    &:hover{
+        transition: ease-in-out 0.2s;
+        border: 2px solid white;
+        background-color: #3B3B3B;
+        box-shadow: 0px 0px 4px 0px #979797;
+    }
+
+    &:active{
+        transition: ease-in-out 0.2s;
+        opacity: 0.4;
     }
 `;

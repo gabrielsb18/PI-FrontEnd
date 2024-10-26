@@ -1,3 +1,5 @@
+import styled from 'styled-components';
+
 export const CardTasks = styled.div`
     min-height: 168px;
     min-width: 272px;
