@@ -158,6 +158,4 @@ export const ContainerCardsTasks = styled.div`
     grid-template-areas: "Task Task Task Task";
     gap: 1.25rem;
     width:100%;
-    border-color:red;
-    border:1px solid;
 `;
