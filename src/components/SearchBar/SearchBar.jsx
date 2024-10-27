@@ -5,7 +5,7 @@ const SearchBar = ({ ...rest }) => {
 		<ContainerInput>
 			<Input {...rest} />
 
-			<img src="/" alt="Ícone de busca" />
+			<img src="/SearchIcon.svg" alt="Ícone de busca" />
 		</ContainerInput>
 	);
 };
