@@ -1,6 +1,7 @@
 import AddTask from "../../components/AddTask/AddTask";
 import HeaderNav from "../../components/Header/Header";
 import Select from "../../components/Select/Select";
+import Logout from "../../components/Logout/Logout"
 
 import { ContainerBody, Main, ContainerGraphics, ContentGraphicsOne, ContentGraphicTwo, HeaderTitle, ContentGraphicTree, HeaderTasks, Tasks, ContainerCardsTasks } from "./Home.style";
 
@@ -38,6 +39,7 @@ export default function Home (){
                     <p>Qualquer coisa</p>
                 </div>
             </ContainerCardsTasks>
+            <Logout/>
             </Main>
         </ContainerBody>
     );
