@@ -1,6 +1,7 @@
 import AddTask from "../../components/AddTask/AddTask";
 import HeaderNav from "../../components/Header/Header";
 import Select from "../../components/Select/Select";
+import Logout from "../../components/Logout/Logout"
 import {CardTask} from "../../components/CardTasks/CardTasks.jsx";
 
 import { ContainerBody, Main, ContainerGraphics, ContentGraphicsOne, ContentGraphicTwo, HeaderTitle, ContentGraphicTree, HeaderTasks, Tasks, ContainerCardsTasks } from "./Home.style";
@@ -48,6 +49,7 @@ export default function Home (){
                     description="teste"
                 />
             </ContainerCardsTasks>
+            <Logout/>
             </Main>
         </ContainerBody>
     );
