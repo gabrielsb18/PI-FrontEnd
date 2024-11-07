@@ -1,6 +1,6 @@
 import {ContainerBody, Title, FormContainer } from '../Cadastro/Cadastro.style'
 import { PanelLogo } from '../../components/PaneLogo/panelLogo'
-import Input from "../../components/Input/Input"
+import { Input } from "../../components/Input/Input"
 import Button from '../../components/Button/Button'
 import { MdOutlineEmail,MdOutlineLock } from "react-icons/md";
 import { Link } from 'react-router-dom';

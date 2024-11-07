@@ -20,3 +20,8 @@ export const InputWrap = styled.div`
         padding: 20px;
     }
 `;
+
+export const ErrorMessage = styled.span`
+    color:red;
+    font-size: 14px;
+`;
