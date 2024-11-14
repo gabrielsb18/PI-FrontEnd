@@ -5,6 +5,7 @@ import Logout from "../../components/Logout/Logout"
 import {CardTask} from "../../components/CardTasks/CardTasks.jsx";
 
 import { ContainerBody, Main, ContainerGraphics, ContentGraphicsOne, ContentGraphicTwo, HeaderTitle, ContentGraphicTree, HeaderTasks, Tasks, ContainerCardsTasks } from "./Home.style";
+import { ToastPopUp } from "../../components/Toast/Toast.jsx";
 
 export default function Home (){
     return(
@@ -51,6 +52,7 @@ export default function Home (){
             </ContainerCardsTasks>
             <Logout/>
             </Main>
+            <ToastPopUp />
         </ContainerBody>
     );
 };

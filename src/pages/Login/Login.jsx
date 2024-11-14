@@ -3,7 +3,7 @@ import { PanelLogo } from '../../components/PaneLogo/panelLogo';
 import { Input } from "../../components/Input/Input";
 import Button from '../../components/Button/Button';
 import { toast } from "sonner";
-import ToastPopUp from '../../components/Toast/Toast';
+import { ToastPopUp } from '../../components/Toast/Toast';
 import { MdOutlineEmail,MdOutlineLock } from "react-icons/md";
 
 import { useNavigate } from 'react-router-dom';
@@ -32,6 +32,9 @@ export default function Login (){
     async function onSubmit(){
         try {
             await signIn({email, senha});
+            setTimeout(() => {
+                toast.success("Login realizado com sucesso");
+            }, 3000);
             navigate("/home");
         } catch (error) {
             toast.error(error.response.data.msg);
