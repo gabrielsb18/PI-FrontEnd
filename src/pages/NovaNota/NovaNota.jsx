@@ -7,10 +7,9 @@ export default function NovaNota() {
     return (
         <ContainerBody>
             <MainContent>
-                <Title>
+                <HeaderTitle>
                     <h1>Nova Tarefa</h1>
-                    <DeleteButton><img src="../../../public/icon-trash.svg" /></DeleteButton>
-                </Title>
+                </HeaderTitle>
                 <InputWrapper>
                     <label>Título</label>
                     <input placeholder='Digite o título'/>
