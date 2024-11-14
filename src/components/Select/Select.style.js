@@ -5,9 +5,6 @@ export const ButtonSelect = styled.div`
     justify-content: center;
     align-items: center;
 
-    width:151px;
-    height:53px;
-
     border:1px solid #979797;
     border-radius: 10px;
     padding: 0 5px;
