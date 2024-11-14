@@ -16,7 +16,7 @@ function AuthProvider ({children}) {
             localStorage.setItem("@Notes:refreshToken", JSON.stringify(refreshToken));
             localStorage.setItem("@Notes:userId", JSON.stringify(userId));
 
-            api.defaults.headers.common["Authorization"] = `Bearer ${acessToken}`;
+            api.defaults.headers.common['authorization'] = `Bearer ${acessToken}`;
 
             setData({acessToken, refreshToken, userId, emailUser});
 
@@ -27,12 +27,12 @@ function AuthProvider ({children}) {
     }
 
     useEffect (()=> {
-        const acessToken = localStorage.getItem("@Notes: token");
-        const refreshToken = localStorage.getItem("@Notes: refreshToken");
-        const userId = localStorage.getItem("@Notes: userId");
+        const acessToken = localStorage.getItem("@Notes:token");
+        const refreshToken = localStorage.getItem("@Notes:refreshToken");
+        const userId = localStorage.getItem("@Notes:userId");
 
         if(acessToken && refreshToken) {
-            api.defaults.headers.common["authorization"] = `Bearer ${acessToken}`;
+            api.defaults.headers.common['authorization'] = `Bearer ${JSON.parse(acessToken)}`;
             setData({
                 acessToken: JSON.parse(acessToken),
                 refreshToken: JSON.parse(refreshToken),
