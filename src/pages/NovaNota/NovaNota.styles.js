@@ -2,18 +2,30 @@ import styled from "styled-components"
 
 export const ContainerBody = styled.div`
     display: flex;
-    justify-content: center;
-    align-items: start;
-    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
     height: 100vh;
     background-color: #2B2B2B;
     color: #F0F0F0;
+`;
+
+export const MainContent = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap:44px;
+    height: 100%;
+    width: 44%;
     padding: 74px 46px;
+
+    @media (max-width: 768px) {
+        width: 100%;
+    }
 `;
 
 export const HeaderTitle = styled.div`
     display: flex;
-    width:100%;
+    width: 100%;
     justify-content:space-between;
     height:42px;
 `;
