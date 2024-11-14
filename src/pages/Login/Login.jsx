@@ -1,18 +1,25 @@
-import {ContainerBody, Title, FormContainer } from '../Login/Login.style'
-import { PanelLogo } from '../../components/PaneLogo/panelLogo'
-import { Input } from "../../components/Input/Input"
-import Button from '../../components/Button/Button'
-import { useNavigate } from 'react-router-dom';
+import {ContainerBody, Title, FormContainer } from '../Login/Login.style';
+import { PanelLogo } from '../../components/PaneLogo/panelLogo';
+import { Input } from "../../components/Input/Input";
+import Button from '../../components/Button/Button';
+import { toast } from "sonner";
+import ToastPopUp from '../../components/Toast/Toast';
 import { MdOutlineEmail,MdOutlineLock } from "react-icons/md";
+
+import { useNavigate } from 'react-router-dom';
+import { createUserFormSchema } from "../../utils/schemavalidation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { createUserFormSchema } from "../../utils/schemavalidation";
 import { useState } from 'react';
+import { useAuth } from "../../contexts/AuthContext";
+
 
 export default function Login (){
-    const [senha, setSenha] = useState();
-	const [email, setEmail] = useState();
+    const {signIn} = useAuth();
     const navigate = useNavigate();
+
+    const [senha, setSenha] = useState("");
+	const [email, setEmail] = useState("");
     
     const {
 		register,
@@ -22,6 +29,15 @@ export default function Login (){
 		resolver: zodResolver(createUserFormSchema),
 	});
 
+    async function onSubmit(){
+        try {
+            await signIn({email, senha});
+            navigate("/home");
+        } catch (error) {
+            toast.error(error.response.data.msg);
+        };
+    };
+
     return (
 		<ContainerBody>
 			<FormContainer>
@@ -30,7 +46,7 @@ export default function Login (){
 					<p>Faça login para continuar</p>
 				</Title>
 
-				<form onSubmit={handleSubmit ()}>
+				<form onSubmit={handleSubmit(onSubmit)}>
 					<div>
 						<Input
                             ref
@@ -64,6 +80,7 @@ export default function Login (){
 			</FormContainer>
 
 			<PanelLogo />
+            <ToastPopUp />
 		</ContainerBody>
 	);
 }
