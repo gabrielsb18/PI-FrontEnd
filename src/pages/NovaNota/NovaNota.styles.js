@@ -30,13 +30,6 @@ export const HeaderTitle = styled.div`
     height:42px;
 `;
 
-export const MainContent = styled.div`
-    display: flex;
-    flex-direction: column;
-    gap:44px;
-    width:700px;
-`;
-
 export const InputWrapper = styled.div`
     display:flex;
     justify-content:center;
