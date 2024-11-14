@@ -1,4 +1,4 @@
-import { ContainerBody, Title, DeleteButton, MainContent,InputWrapper, Salvar } from '../NovaNota/NovaNota.styles'
+import { ContainerBody, HeaderTitle, MainContent,InputWrapper, ButtonSaveNote, ButtonCancel, ContainerActionButtons} from '../NovaNota/NovaNota.styles';
 import { useNavigate } from 'react-router-dom';
 
 export default function NovaNota() {
@@ -17,9 +17,6 @@ export default function NovaNota() {
                 <InputWrapper>
                     <label>Conteúdo</label>
                     <textarea placeholder='Digite o conteúdo'/>
-                <Salvar>
-                    <button>Salvar</button>
-                </Salvar>
                 </InputWrapper>
 
                 <ContainerActionButtons>
