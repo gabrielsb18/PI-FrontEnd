@@ -35,9 +35,11 @@ export const InputWrapper = styled.div`
     justify-content:center;
     gap:15px;
     flex-direction:column;
+
     > label {
         font-size:18px;
     }
+
     > input {
         width:100%;
         height:46px;
@@ -48,6 +50,7 @@ export const InputWrapper = styled.div`
         color:#ffffff;
         font-size:16px;
     }
+    
     > textarea{
         width:100%;
         height:176px;
