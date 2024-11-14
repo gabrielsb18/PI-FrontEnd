@@ -21,6 +21,11 @@ export default function NovaNota() {
                     <button>Salvar</button>
                 </Salvar>
                 </InputWrapper>
+
+                <ContainerActionButtons>
+                    <ButtonSaveNote>Salvar</ButtonSaveNote>
+                    <ButtonCancel>Cancelar</ButtonCancel>
+                </ContainerActionButtons>
             </MainContent>
         </ContainerBody>
     );
