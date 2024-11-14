@@ -10,7 +10,10 @@ export default function HeaderNav({showSearchBar = true}) {
                 <img src="/IconLogo.svg" alt="Logo Notes"/>
             </Link>
 			{showSearchBar && <SearchBar placeholder="Pesquisar notas" />}
-			<ButtonProfile />
+
+            <Link to = "/perfil">
+			    <ButtonProfile />
+            </Link>
 		</Header>
 	);
 }
