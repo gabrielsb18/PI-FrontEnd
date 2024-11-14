@@ -7,7 +7,7 @@ export default function NovaNota() {
 
     return (
         <ContainerBody>
-            <Header />
+            <Header showSearchBar={false} />
             <MainContent>
                 
                 <HeaderTitle>
