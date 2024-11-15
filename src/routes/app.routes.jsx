@@ -10,7 +10,7 @@ export function AppRoutes() {
 			<Route path="/home" element={<Home />} />
 			<Route path="/novanota" element={<NovaNota />} />
 			<Route path="/perfil" element={<Perfil />} />
-			<Route path="*" element={<Error404 />} />
+            <Route path="*" element = {<Error404/>} />
 		</Routes>
 	);
 }

@@ -1,28 +1,31 @@
-import HeaderNav from "../../components/Header/Header.jsx";
 import GoBack from "../../components/GoBack/GoBack.jsx";
 
 import {
-	ContainerBody,
 	Main,
+    Paragraph,
 	Title,
 	Subtitle,
 	Text,
+    ContainerBody
+    
 } from "./Error404.style.js";
 
 export default function Error404() {
 	return (
-		<ContainerBody>
-			<HeaderNav />
-			<Main>
-				<Title>Erro 404</Title>
-				<Subtitle>Página não encontrada</Subtitle>
-				<Text>
-					A página que você procura não existe ou está indisponível no
-					momento
-				</Text>
-				<GoBack />
-			</Main>
-		</ContainerBody>
+        <ContainerBody>
+		<Main>
+			<Title>Erro 404</Title>
+
+            <Paragraph>
+                <Subtitle>Página não encontrada</Subtitle>
+                <Text>
+                    A página que você procura não existe ou está indisponível no
+                    momento
+                </Text>
+            </Paragraph>
+
+			<GoBack />
+		</Main>
+        </ContainerBody>
 	);
 }
-
