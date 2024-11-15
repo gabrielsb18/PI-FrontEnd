@@ -27,7 +27,7 @@ export default function Cadastro (){
                             placeholder="Digite sua senha"
                         />
 
-                        <Link to="/">Já tem uma conta? <strong>Entrar</strong></Link>
+                        <Link to="/login">Já tem uma conta? <strong>Entrar</strong></Link>
                     </div>
                     <div>
                         <Button estilo="flat" name="Cadastre-se"/>
