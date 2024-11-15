@@ -31,10 +31,14 @@ export default function Login (){
 
     async function onSubmit(){
         try {
-            await signIn({email, senha});
+            const response = await signIn({email, senha});
             setTimeout(() => {
-                toast.success("Login realizado com sucesso");
-            }, 3000);
+                toast.success(response.msg, {
+                    style: {
+                        borderColor: "green",
+                    }
+                });
+            }, 1000);
             navigate("/home");
         } catch (error) {
             toast.error(error.response.data.msg);
