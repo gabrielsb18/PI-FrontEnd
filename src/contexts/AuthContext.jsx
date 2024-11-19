@@ -26,6 +26,17 @@ function AuthProvider ({children}) {
         }
     }
 
+    async function signUp ({email, senha}){
+        try {
+            const response = await api.post("/users/", {email, senha})
+
+            return response.data;
+
+        } catch (error) {
+            throw error;
+        }
+    }
+
     useEffect (()=> {
         const acessToken = localStorage.getItem("@Notes:token");
         const refreshToken = localStorage.getItem("@Notes:refreshToken");
@@ -44,6 +55,7 @@ function AuthProvider ({children}) {
 
     const contexto = {
         signIn,
+        signUp,
         emailUser: data.email,
         acessToken: data.acessToken,
         refreshToken: data.refreshToken,
