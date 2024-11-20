@@ -37,6 +37,12 @@ function AuthProvider ({children}) {
         }
     }
 
+    async function signOut() {
+        localStorage.removeItem("@Notes:token");
+        localStorage.removeItem("@Notes:refreshToken");
+        setData({});
+    }
+
     useEffect (()=> {
         const acessToken = localStorage.getItem("@Notes:token");
         const refreshToken = localStorage.getItem("@Notes:refreshToken");
@@ -56,6 +62,7 @@ function AuthProvider ({children}) {
     const contexto = {
         signIn,
         signUp,
+        signOut,
         emailUser: data.email,
         acessToken: data.acessToken,
         refreshToken: data.refreshToken,
