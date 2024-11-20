@@ -1,5 +1,6 @@
 import { ContainerBody, HeaderTitle, MainContent, InputWrapper, ButtonSaveNote, ButtonCancel, ContainerActionButtons} from '../NovaNota/NovaNota.styles';
 import Header from '../../components/Header/Header';
+import Logout from '../../components/Logout/Logout'
 import { useNavigate } from 'react-router-dom';
 
 export default function NovaNota() {
@@ -27,7 +28,6 @@ export default function NovaNota() {
                     <ButtonSaveNote>Salvar</ButtonSaveNote>
                     <ButtonCancel>Cancelar</ButtonCancel>
                 </ContainerActionButtons>
-
             </MainContent>
         </ContainerBody>
     );
