@@ -5,7 +5,6 @@ export const ContainerBody = styled.div`
     justify-content: space-between;
     align-items: center;
     flex-direction: column;
-    height: 100vh;
     background-color: #2B2B2B;
     color: #F0F0F0;
 `;
@@ -14,10 +13,14 @@ export const MainContent = styled.div`
     display: flex;
     flex-direction: column;
     gap:44px;
-    height: 100%;
     width: 44%;
-    padding: 74px 46px;
-
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 50px;
+    padding-top: 50px;
+    box-sizing: border-box;
+    height: 100vh;
+    max-height: 100%;
     @media (max-width: 768px) {
         width: 100%;
     }
