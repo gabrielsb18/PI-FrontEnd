@@ -8,7 +8,7 @@ export function AuthRoutes(){
     <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/cadastro" element={<Cadastro />} />
-        <Route path="*" element = {<Error404/>} />
+        <Route path="*" element = {<Error404 redirect="/login"/>} />
     </Routes >
     )
 }
