@@ -8,7 +8,8 @@ function AuthProvider({ children }) {
 
 	useEffect(() => {
 		const acessToken = localStorage.getItem("@Notes:token");
-		if (acessToken) {
+		
+        if (acessToken) {
 			const fetchUserData = async () => {
 				try {
 					const response = await api.get("/users", {
@@ -16,7 +17,7 @@ function AuthProvider({ children }) {
 							authorization: `Bearer ${JSON.parse(acessToken)}`,
 						},
 					});
-                    const {email: emailUser, nome, userId}= response.data;
+                    const { email: emailUser, nome, userId }= response.data;
 
                     setData(prevstate => ({
                         ...prevstate, 
@@ -45,13 +46,9 @@ function AuthProvider({ children }) {
 			} = response.data;
 
 			localStorage.setItem("@Notes:token", JSON.stringify(acessToken));
-			localStorage.setItem(
-				"@Notes:refreshToken",
-				JSON.stringify(refreshToken),
-			);
+			localStorage.setItem("@Notes:refreshToken", JSON.stringify(refreshToken));
 
-			api.defaults.headers.common["authorization"] =
-				`Bearer ${acessToken}`;
+			api.defaults.headers.common["authorization"] = `Bearer ${acessToken}`;
 
 			setData({ acessToken, refreshToken, userId, emailUser });
 
@@ -82,13 +79,13 @@ function AuthProvider({ children }) {
 		const refreshToken = localStorage.getItem("@Notes:refreshToken");
 
 		if (acessToken && refreshToken) {
-			api.defaults.headers.common["authorization"] =
-				`Bearer ${JSON.parse(acessToken)}`;
+			api.defaults.headers.common["authorization"] = `Bearer ${JSON.parse(acessToken)}`;
 			setData({
 				acessToken: JSON.parse(acessToken),
 				refreshToken: JSON.parse(refreshToken),
 			});
-		}
+		};
+
 	}, []);
 
 	const contexto = {
@@ -102,7 +99,9 @@ function AuthProvider({ children }) {
 	};
 
 	return (
-		<AuthContext.Provider value={contexto}>{children}</AuthContext.Provider>
+		<AuthContext.Provider value={contexto}>
+            {children}
+        </AuthContext.Provider>
 	);
 }
 
