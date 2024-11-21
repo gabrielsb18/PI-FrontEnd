@@ -13,7 +13,7 @@ export const Main = styled.main`
     height: auto;
     margin: 0 auto;
     width:70%;
-    min-height: 100%;
+    min-height: 100vh;
 `;
 
 export const HeaderTitle = styled.div`
