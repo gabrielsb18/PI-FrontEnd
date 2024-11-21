@@ -1,9 +1,10 @@
 import styled from "styled-components";
 
-export const ContainerProfile = styled.div`
+export const ContainerProfile = styled.button`
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
     gap: 12px;
 
     border-radius: 8px;
@@ -13,10 +14,37 @@ export const ContainerProfile = styled.div`
     cursor: pointer;
 
     transition: ease-out 0.2s;
+    background-color: transparent;
 
     &:hover {
         border-color: #666;
     }
+`;
+
+export const DropdownContent = styled.div`
+    display: none;
+    position: absolute;
+    top: 100%;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    border-radius: 4px;
+  
+  ${ContainerProfile}:hover & {
+    display: block;
+  }
+`;
+
+export const DropdownItem = styled.a`
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  
+  &:hover {
+    background-color: #f1f1f1;
+    border-radius: 4px;
+  }
 `;
 
 export const ContentProfile = styled.div`
