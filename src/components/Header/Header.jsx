@@ -12,7 +12,7 @@ export default function HeaderNav({showSearchBar = true}) {
 			{showSearchBar && <SearchBar placeholder="Pesquisar notas" />}
 
             <Link to = "/perfil">
-			    <ButtonProfile />
+                <ButtonProfile />
             </Link>
 		</Header>
 	);

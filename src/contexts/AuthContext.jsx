@@ -39,6 +39,7 @@ function AuthProvider({ children }) {
 			const response = await api.post("/users/login", data);
 
 			const {
+                nome,
 				acessToken,
 				refreshToken,
 				userId,
@@ -50,7 +51,7 @@ function AuthProvider({ children }) {
 
 			api.defaults.headers.common["authorization"] = `Bearer ${acessToken}`;
 
-			setData({ acessToken, refreshToken, userId, emailUser });
+			setData({ acessToken, refreshToken, userId, emailUser, nome });
 
 			return response.data;
 		} catch (error) {
@@ -92,7 +93,8 @@ function AuthProvider({ children }) {
 		signIn,
 		signUp,
 		signOut,
-		emailUser: data.email,
+        nome: data.nome, 
+		emailUser: data.emailUser,
 		acessToken: data.acessToken,
 		refreshToken: data.refreshToken,
 		userId: data.userId,

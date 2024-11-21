@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { device } from "../../constants/index";
 
 export const ContainerInput = styled.div`
 	width: 18rem;
@@ -10,16 +11,15 @@ export const ContainerInput = styled.div`
 	border: 1px solid #666;
 	background-color: #2e2e2e;
 
-	position: absolute;
-	left: 0;
-	right: 0;
-	margin: 0 auto;
-
 	> img {
 		margin-right: 20px;
 		width: 1.75rem;
 		height: 1.75rem;
 	}
+   
+    @media ${device.xs}{
+        display: none;
+    }
 `;
 
 export const Input = styled.input`
@@ -31,7 +31,7 @@ export const Input = styled.input`
 	font-size: 16px;
 	border: none;
 	font-weight: 400;
-	color: white;
+	color: white; 
 
 	&::placeholder {
 		color: #777;
