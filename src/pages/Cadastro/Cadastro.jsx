@@ -1,51 +1,52 @@
-import {ContainerBody, Title, FormContainer } from '../Cadastro/Cadastro.style'
-import { PanelLogo } from '../../components/PaneLogo/panelLogo'
-import { Input } from "../../components/Input/Input"
-import Button from '../../components/Button/Button'
-import { MdOutlineEmail,MdOutlineLock } from "react-icons/md";
-import { Link, useNavigate } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
-import { zodResolver} from '@hookform/resolvers/zod';
-import { createUserFormSchema } from '../../utils/schemavalidation';
-import { useState } from 'react';
-import { useAuth } from '../../contexts/AuthContext';
-import { toast } from 'sonner';
+import {
+	ContainerBody,
+	Title,
+	FormContainer,
+} from "../Cadastro/Cadastro.style";
+import { PanelLogo } from "../../components/PaneLogo/panelLogo";
+import { Input } from "../../components/Input/Input";
+import Button from "../../components/Button/Button";
+import { MdOutlineEmail, MdOutlineLock } from "react-icons/md";
+import { Link, useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { registerUserFormSchema } from "../../utils/registerUserFormSchema";
+import { useAuth } from "../../contexts/AuthContext";
+import { toast } from "sonner";
 import { ToastPopUp } from "../../components/Toast/Toast";
+import { FiUser } from "react-icons/fi";
 
-export default function Cadastro (){
+export default function Cadastro() {
 	const { signUp } = useAuth();
-	const navigate= useNavigate();
-
-	const [ email, setEmail] = useState("");
-	const [ senha, setSenha] = useState("");
+	const navigate = useNavigate();
 
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
 	} = useForm({
-		resolver: zodResolver(createUserFormSchema),
+		resolver: zodResolver(registerUserFormSchema),
 	});
 
-	async function onSignup (){
+	async function onSignup(data) {
 		try {
-			const response = await signUp({email, senha});
-			toast.success(response.msg, {
-				style:{
-					borderColor:"green"
-				}
-			});
+			const response = await signUp(data);
+            
+			setTimeout(() => {
+                toast.success(response.msg, {
+                    style: {
+                        borderColor: "green",
+                    },
+                });
+            }, 2000);
 
-			setTimeout(()=>{
-				navigate("/login")
-			},6000)
-
+            navigate("/login");
 		} catch (error) {
-			toast.error(error.response.data.erros)			
+			toast.error(error.response.data.errors);
 		}
-	};
+	}
 
-    return (
+	return (
 		<ContainerBody>
 			<FormContainer>
 				<Title>
@@ -59,11 +60,19 @@ export default function Cadastro (){
 				<form onSubmit={handleSubmit(onSignup)}>
 					<div>
 						<Input
+							type="text"
+							icon={FiUser}
+							nome="Nome"
+							placeholder="Digite seu nome"
+							{...register("nome")}
+							error={errors.nome?.message}
+						/>
+
+						<Input
 							type="email"
 							icon={MdOutlineEmail}
 							nome="Email"
 							placeholder="Digite seu email"
-							onChange={(e) => setEmail(e.target.value)}
 							{...register("email")}
 							error={errors.email?.message}
 						/>
@@ -72,7 +81,6 @@ export default function Cadastro (){
 							icon={MdOutlineLock}
 							nome="Senha"
 							placeholder="Digite sua senha"
-							onChange={(e) => setSenha(e.target.value)}
 							{...register("senha")}
 							error={errors.senha?.message}
 						/>
@@ -82,13 +90,17 @@ export default function Cadastro (){
 						</Link>
 					</div>
 					<div>
-						<Button type="submit" estilo="flat" name="Cadastre-se" />
+						<Button
+							type="submit"
+							estilo="flat"
+							name="Cadastre-se"
+						/>
 					</div>
 				</form>
 			</FormContainer>
 
 			<PanelLogo />
-			<ToastPopUp/>
+			<ToastPopUp />
 		</ContainerBody>
 	);
 }
