@@ -13,7 +13,7 @@ export const Main = styled.main`
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	gap: 32px;
+	gap: 12px;
 `;
 
 export const Paragraph = styled.div`

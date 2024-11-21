@@ -3,11 +3,11 @@ import {device} from "../../constants/index";
 
 export const ContainerBody = styled.div`
     background-color: #2a2a2a;
-    height: 100vh;
+    min-height: 100vh;
 `;
 
 export const Main = styled.main`
-    display:flex;
+    display: flex;
     flex-direction: column;
     gap: 32px;
     height: auto;
@@ -17,10 +17,10 @@ export const Main = styled.main`
 `;
 
 export const HeaderTitle = styled.div`
-    display:flex;
-    flex-direction:column;
-    justify-content:flex-start;
-    align-items:start;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: start;
     margin-top:52px;
 
     > h1 {
@@ -41,10 +41,7 @@ export const HeaderTitle = styled.div`
 
 export const ContainerGraphics = styled.div`
 	display: grid;
-	grid-template-columns: minmax(280px, 3fr) minmax(160px, 2fr) minmax(
-			200px,
-			2fr
-		);
+	grid-template-columns: minmax(280px, 3fr) minmax(160px, 2fr) minmax(200px, 2fr);
 	grid-template-rows: minmax(200px, auto);
 	grid-template-areas: "MonthsCompletedTasks ContentGraphicTwo ContentGraphicTree";
 	gap: 18px;
@@ -79,8 +76,8 @@ export const ContainerGraphics = styled.div`
 `;
 
 export const ContentGraphicsOne = styled.div`
-    display:flex;
-    flex-direction:column;
+    display: flex;
+    flex-direction: column;
     justify-content: space-around;
     grid-area: MonthsCompletedTasks;
     border: 1px solid #979797;
@@ -125,8 +122,8 @@ export const ContentGraphicTwo = styled.div`
 `;
 
 export const ContentGraphicTree = styled.div`
-    display:flex;
-    flex-direction:column;
+    display: flex;
+    flex-direction: column;
     justify-content: space-around;
     grid-area: ContentGraphicTree;
     border: 1px solid #979797;
@@ -153,23 +150,41 @@ export const ContentGraphicTree = styled.div`
 `;
 
 export const HeaderTasks = styled.div`
-    display:flex;
+    display: flex;
     justify-content: space-between;
-    align-items:center;
+    align-items: end;
     width: 100%;
 `;
 
-export const Tasks = styled.div`
-    display:flex;
+export const ContainerTitle = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
     gap: 25px;
-    justify-content:center;
-    align-items:center;
+    
     > h1{
         color: #666;
         font-size: 32px;
         font-weight:400;
     }
+    
+    @media ${device.xs} {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+`;
 
+export const ActionsButtons = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    width: 80%;
+    gap: 25px;
+
+    @media ${device.xs} {
+        width: 100%;
+    }
 `;
 
 export const ContainerTasks = styled.div`
