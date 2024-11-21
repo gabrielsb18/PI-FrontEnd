@@ -15,10 +15,17 @@ export const CardTasks = styled.div`
 
     background-color: #2F704C;
     transition: ease-out 0.2s;
+    
+    background-color: ${({status}) => {
+        if (status === 'pendente') return '#E0B73A';
+        if(status === 'concluida') return '#2F704C';
+        return 'gray'
+    }};
+
 
     &:hover{
+        filter: brightness(0.7);
         border: 1.2px solid #1a3a29;
-        background-color: #25573d;
     }
 
     > h1 {
@@ -29,6 +36,11 @@ export const CardTasks = styled.div`
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: normal;
+
+        color: ${({status}) => {
+            if (status === 'pendente') return '#363530';
+            return '#fff'
+        }};
     }
 
     > p {
@@ -39,5 +51,10 @@ export const CardTasks = styled.div`
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: normal;
+
+        color: ${({status}) => {
+            if (status === 'pendente') return '#363530';
+            return '#fff'
+        }};
     }
 `;
