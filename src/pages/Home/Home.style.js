@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import {device} from "../../constants/index";
 
 export const ContainerBody = styled.div`
     background-color: #2a2a2a;
@@ -12,6 +13,7 @@ export const Main = styled.main`
     height: auto;
     margin: 0 auto;
     width:70%;
+    min-height: 100%;
 `;
 
 export const HeaderTitle = styled.div`
@@ -38,13 +40,42 @@ export const HeaderTitle = styled.div`
 `;
 
 export const ContainerGraphics = styled.div`
-    display:grid;
-    grid-template-columns: minmax(280px,3fr) minmax(160px, 2fr) minmax(200px, 2fr);
-    grid-template-rows: minmax(200px, auto);
-    grid-template-areas: "MonthsCompletedTasks ContentGraphicTwo ContentGraphicTree";
-    gap:18px;
-    justify-content:flex-start;
-    width:100%;
+	display: grid;
+	grid-template-columns: minmax(280px, 3fr) minmax(160px, 2fr) minmax(
+			200px,
+			2fr
+		);
+	grid-template-rows: minmax(200px, auto);
+	grid-template-areas: "MonthsCompletedTasks ContentGraphicTwo ContentGraphicTree";
+	gap: 18px;
+	justify-content: flex-start;
+	width: 100%;
+
+	@media ${device.lg} {
+		grid-template-areas: "MonthsCompletedTasks ContentGraphicTwo ContentGraphicTree";
+	}
+
+	@media ${device.md} {
+		grid-template-areas:
+			"MonthsCompletedTasks MonthsCompletedTasks"
+			"ContentGraphicTwo"
+			"ContentGraphicTree";
+	}
+
+	@media ${device.sm} {
+		grid-template-columns: 1fr 1fr;
+		grid-template-areas:
+			"ContentGraphicTree ContentGraphicTwo"
+			"MonthsCompletedTasks MonthsCompletedTasks";
+	}
+
+	@media ${device.xs} {
+		grid-template-columns: 1fr;
+		grid-template-areas:
+			"MonthsCompletedTasks"
+			"ContentGraphicTwo"
+			"ContentGraphicTree";
+	}
 `;
 
 export const ContentGraphicsOne = styled.div`
@@ -152,10 +183,40 @@ export const ContainerTasks = styled.div`
 `;
 
 export const ContainerCardsTasks = styled.div`
-    display:grid;
-    grid-template-columns: repeat(auto-fit, minmax(272px, 1fr));
-    grid-template-rows: minmax(168px, auto);
-    grid-template-areas: "Task Task Task Task";
-    gap: 1.25rem;
-    width:100%;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(272px, 1fr));
+	grid-template-rows: minmax(168px, auto);
+	grid-template-areas: "Task Task Task Task";
+	gap: 1.25rem;
+	width: 100%;
+
+	@media ${device.lg} {
+		grid-template-areas:
+			"Task"
+			"Task"
+			"Task"
+			"Task";
+	}
+
+	@media ${device.md} {
+		grid-template-areas:
+			"Task Task"
+			"Task Task";
+	}
+
+	@media ${device.sm} {
+		grid-template-areas:
+			"Task"
+			"Task"
+			"Task"
+			"Task";
+	}
+
+	@media ${device.xs} {
+		grid-template-areas:
+			"Task"
+			"Task"
+			"Task"
+			"Task";
+	}
 `;

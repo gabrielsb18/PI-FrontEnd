@@ -3,76 +3,112 @@ import { api } from "../services/api";
 
 export const AuthContext = createContext({});
 
-function AuthProvider ({children}) {
-    const [data, setData] = useState({});
+function AuthProvider({ children }) {
+	const [data, setData] = useState({});
 
-    async function signIn (data) {
-        try { 
-            const response = await api.post("/users/login", data);
+	useEffect(() => {
+		const acessToken = localStorage.getItem("@Notes:token");
+		if (acessToken) {
+			const fetchUserData = async () => {
+				try {
+					const response = await api.get("/users", {
+						headers: {
+							authorization: `Bearer ${JSON.parse(acessToken)}`,
+						},
+					});
+                    const {email: emailUser, nome, userId}= response.data;
 
-            const {acessToken, refreshToken, userId, email: emailUser} = response.data;
+                    setData(prevstate => ({
+                        ...prevstate, 
+                        emailUser,
+                        nome,
+                        userId, 
+                    }))
+				} catch (error) {
+					throw error;
+				}
+			};
+            fetchUserData();
+        } ;
 
-            localStorage.setItem("@Notes:token", JSON.stringify(acessToken));
-            localStorage.setItem("@Notes:refreshToken", JSON.stringify(refreshToken));
-            localStorage.setItem("@Notes:userId", JSON.stringify(userId));
+    },[]);
 
-            api.defaults.headers.common['authorization'] = `Bearer ${acessToken}`;
+	async function signIn(data) {
+		try {
+			const response = await api.post("/users/login", data);
 
-            setData({acessToken, refreshToken, userId, emailUser});
+			const {
+				acessToken,
+				refreshToken,
+				userId,
+				email: emailUser,
+			} = response.data;
 
-            return response.data;
-            
-        } catch (error) {
-            throw error;
-        }
-    }
+			localStorage.setItem("@Notes:token", JSON.stringify(acessToken));
+			localStorage.setItem(
+				"@Notes:refreshToken",
+				JSON.stringify(refreshToken),
+			);
 
-    async function signUp (data){
-        try {
-            const response = await api.post("/users/", data)
+			api.defaults.headers.common["authorization"] =
+				`Bearer ${acessToken}`;
 
-            return response.data;
+			setData({ acessToken, refreshToken, userId, emailUser });
 
-        } catch (error) {
-            throw error;
-        }
-    }
+			return response.data;
+		} catch (error) {
+			throw error;
+		}
+	}
 
-    useEffect (()=> {
-        const acessToken = localStorage.getItem("@Notes:token");
-        const refreshToken = localStorage.getItem("@Notes:refreshToken");
-        const userId = localStorage.getItem("@Notes:userId");
+	async function signUp(data) {
+		try {
+			const response = await api.post("/users/", data);
 
-        if(acessToken && refreshToken) {
-            api.defaults.headers.common['authorization'] = `Bearer ${JSON.parse(acessToken)}`;
-            setData({
-                acessToken: JSON.parse(acessToken),
-                refreshToken: JSON.parse(refreshToken),
-                userId: JSON.parse(userId),
-            });
-        };
+			return response.data;
+		} catch (error) {
+			throw error;
+		}
+	}
 
-    }, []);
+	async function signOut() {
+		localStorage.removeItem("@Notes:token");
+		localStorage.removeItem("@Notes:refreshToken");
+		setData({});
+	}
 
-    const contexto = {
-        signIn,
-        signUp,
-        emailUser: data.email,
-        acessToken: data.acessToken,
-        refreshToken: data.refreshToken,
-        userId: data.userId,
-    };
+	useEffect(() => {
+		const acessToken = localStorage.getItem("@Notes:token");
+		const refreshToken = localStorage.getItem("@Notes:refreshToken");
 
-    return (
-        <AuthContext.Provider value={contexto}>
-            {children}
-        </AuthContext.Provider>
-    );
+		if (acessToken && refreshToken) {
+			api.defaults.headers.common["authorization"] =
+				`Bearer ${JSON.parse(acessToken)}`;
+			setData({
+				acessToken: JSON.parse(acessToken),
+				refreshToken: JSON.parse(refreshToken),
+			});
+		}
+	}, []);
+
+	const contexto = {
+		signIn,
+		signUp,
+		signOut,
+		emailUser: data.email,
+		acessToken: data.acessToken,
+		refreshToken: data.refreshToken,
+		userId: data.userId,
+	};
+
+	return (
+		<AuthContext.Provider value={contexto}>{children}</AuthContext.Provider>
+	);
 }
 
-function useAuth(){
-    const context = useContext(AuthContext);
-    return context;
-};
+function useAuth() {
+	const context = useContext(AuthContext);
+	return context;
+}
 
 export { AuthProvider, useAuth };
