@@ -3,82 +3,114 @@ import { api } from "../services/api";
 
 export const AuthContext = createContext({});
 
-function AuthProvider ({children}) {
-    const [data, setData] = useState({});
+function AuthProvider({ children }) {
+	const [data, setData] = useState({});
 
-    async function signIn ({email, senha}) {
-        try { 
-            const response = await api.post("/users/login", { email, senha});
+	useEffect(() => {
+		const acessToken = localStorage.getItem("@Notes:token");
+		if (acessToken) {
+			const fetchUserData = async () => {
+				try {
+					const response = await api.get("/users", {
+						headers: {
+							authorization: `Bearer ${JSON.parse(acessToken)}`,
+						},
+					});
+                    const {email: emailUser, nome, userId}= response.data;
 
-            const {acessToken, refreshToken, userId, email: emailUser} = response.data;
+                    setData(prevstate => ({
+                        ...prevstate, 
+                        emailUser,
+                        nome,
+                        userId, 
+                    }))
+				} catch (error) {
+					throw error;
+				}
+			};
+            fetchUserData();
+        } ;
 
-            localStorage.setItem("@Notes:token", JSON.stringify(acessToken));
-            localStorage.setItem("@Notes:refreshToken", JSON.stringify(refreshToken));
-            localStorage.setItem("@Notes:userId", JSON.stringify(userId));
+    },[]);
 
-            api.defaults.headers.common['authorization'] = `Bearer ${acessToken}`;
+	async function signIn({ email, senha }) {
+		try {
+			const response = await api.post("/users/login", { email, senha });
 
-            setData({acessToken, refreshToken, userId, emailUser});
+			const {
+				acessToken,
+				refreshToken,
+				userId,
+				email: emailUser,
+			} = response.data;
 
-            return response.data;
-        } catch (error) {
-            throw error;
-        }
-    }
+			localStorage.setItem("@Notes:token", JSON.stringify(acessToken));
+			localStorage.setItem(
+				"@Notes:refreshToken",
+				JSON.stringify(refreshToken),
+			);
 
-    async function signUp ({email, senha}){
-        try {
-            const response = await api.post("/users/", {email, senha})
+			api.defaults.headers.common["authorization"] =
+				`Bearer ${acessToken}`;
 
-            return response.data;
+			setData({ acessToken, refreshToken, userId, emailUser });
 
-        } catch (error) {
-            throw error;
-        }
-    }
+			return response.data;
+		} catch (error) {
+			throw error;
+		}
+	}
 
-    async function signOut() {
-        localStorage.removeItem("@Notes:token");
-        localStorage.removeItem("@Notes:refreshToken");
-        setData({});
-    }
+	async function signUp({ email, senha }) {
+		try {
+			const response = await api.post("/users/", { email, senha });
 
-    useEffect (()=> {
-        const acessToken = localStorage.getItem("@Notes:token");
-        const refreshToken = localStorage.getItem("@Notes:refreshToken");
-        const userId = localStorage.getItem("@Notes:userId");
+			return response.data;
+		} catch (error) {
+			throw error;
+		}
+	}
 
-        if(acessToken && refreshToken) {
-            api.defaults.headers.common['authorization'] = `Bearer ${JSON.parse(acessToken)}`;
-            setData({
-                acessToken: JSON.parse(acessToken),
-                refreshToken: JSON.parse(refreshToken),
-                userId: JSON.parse(userId),
-            });
-        };
+	async function signOut() {
+		localStorage.removeItem("@Notes:token");
+		localStorage.removeItem("@Notes:refreshToken");
+		setData({});
+	}
 
-    }, []);
+	useEffect(() => {
+		const acessToken = localStorage.getItem("@Notes:token");
+		const refreshToken = localStorage.getItem("@Notes:refreshToken");
+		const userId = localStorage.getItem("@Notes:userId");
 
-    const contexto = {
-        signIn,
-        signUp,
-        signOut,
-        emailUser: data.email,
-        acessToken: data.acessToken,
-        refreshToken: data.refreshToken,
-        userId: data.userId,
-    };
+		if (acessToken && refreshToken) {
+			api.defaults.headers.common["authorization"] =
+				`Bearer ${JSON.parse(acessToken)}`;
+			setData({
+				acessToken: JSON.parse(acessToken),
+				refreshToken: JSON.parse(refreshToken),
+				userId: JSON.parse(userId),
+			});
+		}
+	}, []);
 
-    return (
-        <AuthContext.Provider value={contexto}>
-            {children}
-        </AuthContext.Provider>
-    );
+	const contexto = {
+		signIn,
+		signUp,
+		signOut,
+		emailUser: data.email,
+		acessToken: data.acessToken,
+		refreshToken: data.refreshToken,
+		userId: data.userId,
+	};
+
+	return (
+		<AuthContext.Provider value={contexto}>{children}</AuthContext.Provider>
+	);
 }
 
-function useAuth(){
-    const context = useContext(AuthContext);
-    return context;
-};
+function useAuth() {
+	const context = useContext(AuthContext);
+	return context;
+}
 
 export { AuthProvider, useAuth };
