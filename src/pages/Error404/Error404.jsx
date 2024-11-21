@@ -17,7 +17,7 @@ export default function Error404({redirect}) {
 	return (
         <ContainerBody>
 		<Main>
-			<Title>Erro 404</Title>'
+			<Title><strong>Erro 404</strong></Title>'
 
             <Paragraph>
                 <Subtitle>Página não encontrada</Subtitle>
