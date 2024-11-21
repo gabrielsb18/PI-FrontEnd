@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { device } from "../../constants/index";
 
 export const ButtonSelect = styled.div`
     display: flex;
@@ -20,11 +21,10 @@ export const ButtonSelect = styled.div`
         width: 14px;
         height: 14px;
     }
-
     
     > select {
         cursor: pointer;
-        height: 100%;
+        height: 52px;
         width: 100%;
         
         padding: 18px;
@@ -48,4 +48,8 @@ export const ButtonSelect = styled.div`
             font-size: 14px;
         }
     }
+
+    @media ${device.xs}{
+        width: 50%;
+    } 
 `;
