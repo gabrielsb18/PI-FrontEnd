@@ -1,51 +1,48 @@
-import {ContainerBody, Title, FormContainer } from '../Login/Login.style';
-import { PanelLogo } from '../../components/PaneLogo/panelLogo';
+import { ContainerBody, Title, FormContainer } from "../Login/Login.style";
+import { PanelLogo } from "../../components/PaneLogo/panelLogo";
 import { Input } from "../../components/Input/Input";
-import Button from '../../components/Button/Button';
+import Button from "../../components/Button/Button";
 import { toast } from "sonner";
-import { ToastPopUp } from '../../components/Toast/Toast';
-import { MdOutlineEmail,MdOutlineLock } from "react-icons/md";
+import { ToastPopUp } from "../../components/Toast/Toast";
+import { MdOutlineEmail, MdOutlineLock } from "react-icons/md";
 
-import { useNavigate } from 'react-router-dom';
-import { createUserFormSchema } from "../../utils/schemavalidation";
+import { useNavigate } from "react-router-dom";
+import { loginUserSchema } from "../../utils/loginUserSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { useState } from 'react';
 import { useAuth } from "../../contexts/AuthContext";
 
+export default function Login() {
+	const { signIn } = useAuth();
+	const navigate = useNavigate();
 
-export default function Login (){
-    const {signIn} = useAuth();
-    const navigate = useNavigate();
-
-    const [senha, setSenha] = useState("");
-	const [email, setEmail] = useState("");
-    
-    const {
+	const {
 		register,
 		handleSubmit,
 		formState: { errors },
 	} = useForm({
-		resolver: zodResolver(createUserFormSchema),
+		resolver: zodResolver(loginUserSchema),
 	});
 
-    async function onSubmit(){
-        try {
-            const response = await signIn({email, senha});
+	async function onSubmit(data) {
+		try {
+			const response = await signIn(data);
+			
             setTimeout(() => {
-                toast.success(response.msg, {
-                    style: {
-                        borderColor: "green",
-                    }
-                });
-            }, 1000);
-            navigate("/home");
-        } catch (error) {
-            toast.error(error.response.data.msg);
-        };
-    };
+				toast.success(response.msg, {
+					style: {
+						borderColor: "green",
+					},
+				});
+			}, 1000);
+            
+			navigate("/Home");
+		} catch (error) {
+			toast.error(error.response.data.errors);
+		}
+	}
 
-    return (
+	return (
 		<ContainerBody>
 			<FormContainer>
 				<Title>
@@ -56,23 +53,21 @@ export default function Login (){
 				<form onSubmit={handleSubmit(onSubmit)}>
 					<div>
 						<Input
-                            ref
+							ref
 							error={errors.email?.message}
 							{...register("email")}
 							icon={MdOutlineEmail}
 							nome="Email"
 							placeholder="Digite seu email"
-							onChange={e => setEmail(e.target.value)}
 						/>
 						<Input
-                            ref
-                            type="password"
+							ref
+							type="password"
 							error={errors.senha?.message}
 							{...register("senha")}
 							icon={MdOutlineLock}
 							nome="Senha"
 							placeholder="Digite sua senha"
-							onChange={e => setSenha(e.target.value)}
 						/>
 					</div>
 					<div>
@@ -87,7 +82,7 @@ export default function Login (){
 			</FormContainer>
 
 			<PanelLogo />
-            <ToastPopUp />
+			<ToastPopUp />
 		</ContainerBody>
 	);
 }
