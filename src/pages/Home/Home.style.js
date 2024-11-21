@@ -188,13 +188,9 @@ export const ActionsButtons = styled.div`
 `;
 
 export const ContainerTasks = styled.div`
-    display:grid;
-    grid-template-columns: minmax(280px,3fr) minmax(160px, 2fr) minmax(200px, 2fr);
-    grid-template-rows: minmax(200px, auto);
-    grid-template-areas: "MonthsCompletedTasks ContentGraphicTwo ContentGraphicTree";
-    gap:18px;
-    justify-content:flex-start;
-    width:100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
 `;
 
 export const ContainerCardsTasks = styled.div`
@@ -234,4 +230,14 @@ export const ContainerCardsTasks = styled.div`
 			"Task"
 			"Task";
 	}
+`;
+
+export const BackgroundModal = styled.div`
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: 0 auto;
+    background-color: rgba(0, 0, 0, 0.4);
 `;
