@@ -33,9 +33,9 @@ function AuthProvider({ children }) {
 
     },[]);
 
-	async function signIn({ email, senha }) {
+	async function signIn(data) {
 		try {
-			const response = await api.post("/users/login", { email, senha });
+			const response = await api.post("/users/login", data);
 
 			const {
 				acessToken,
@@ -61,9 +61,9 @@ function AuthProvider({ children }) {
 		}
 	}
 
-	async function signUp({ email, senha }) {
+	async function signUp(data) {
 		try {
-			const response = await api.post("/users/", { email, senha });
+			const response = await api.post("/users/", data);
 
 			return response.data;
 		} catch (error) {
@@ -80,7 +80,6 @@ function AuthProvider({ children }) {
 	useEffect(() => {
 		const acessToken = localStorage.getItem("@Notes:token");
 		const refreshToken = localStorage.getItem("@Notes:refreshToken");
-		const userId = localStorage.getItem("@Notes:userId");
 
 		if (acessToken && refreshToken) {
 			api.defaults.headers.common["authorization"] =
@@ -88,7 +87,6 @@ function AuthProvider({ children }) {
 			setData({
 				acessToken: JSON.parse(acessToken),
 				refreshToken: JSON.parse(refreshToken),
-				userId: JSON.parse(userId),
 			});
 		}
 	}, []);
