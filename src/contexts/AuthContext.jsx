@@ -6,9 +6,9 @@ export const AuthContext = createContext({});
 function AuthProvider ({children}) {
     const [data, setData] = useState({});
 
-    async function signIn ({email, senha}) {
+    async function signIn (data) {
         try { 
-            const response = await api.post("/users/login", { email, senha});
+            const response = await api.post("/users/login", data);
 
             const {acessToken, refreshToken, userId, email: emailUser} = response.data;
 
@@ -21,14 +21,15 @@ function AuthProvider ({children}) {
             setData({acessToken, refreshToken, userId, emailUser});
 
             return response.data;
+            
         } catch (error) {
             throw error;
         }
     }
 
-    async function signUp ({email, senha}){
+    async function signUp (data){
         try {
-            const response = await api.post("/users/", {email, senha})
+            const response = await api.post("/users/", data)
 
             return response.data;
 
