@@ -3,7 +3,7 @@ import DropdownMenu from "../DropdownMenu/DropdownMenu";
 import { useAuth } from "../../contexts/AuthContext";
 
 export function ButtonProfile(){
-    const {nome, emailUser, signOut} = useAuth();
+    const {nome, emailUser} = useAuth();
 
     return (
         <ContainerProfile >
