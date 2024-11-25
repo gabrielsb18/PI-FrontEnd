@@ -1,6 +1,4 @@
-/* eslint-disable react/prop-types */
-import { InputWrap, ErrorMessage } from "./Input.styles";
-import React from "react";
+import { InputWrap, ErrorMessage } from "./Input.styles";import React from "react";
 
 const Input = React.forwardRef(({ error, nome, icon:Icon, ...rest },ref) => {
     return (
