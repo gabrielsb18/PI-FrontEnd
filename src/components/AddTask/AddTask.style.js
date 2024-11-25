@@ -10,7 +10,7 @@ export const Button = styled.button`
     justify-content: center;
     padding: 16px;
 
-    border: 2px solid #979797;
+    border: 1px solid #979797;
     border-radius: 10px;
     background-color: transparent ;
     
