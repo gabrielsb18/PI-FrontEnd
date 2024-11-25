@@ -85,9 +85,12 @@ export const ContentTask = styled(TextareaAutosize)`
     border-radius: 10px;
     font-size: 18px;
     color:#F0F0F0;
-    min-height: 154px;
+    min-height: 300px;
     resize: none;
-     background-color: #414141;
+
+    @media ${device.xs}{
+        min-height: 150px;
+    }
 `;
 
 export const ContainerButtons = styled.div`
