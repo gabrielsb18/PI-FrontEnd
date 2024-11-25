@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const ContainerProfile = styled.button`
     display: flex;
@@ -35,7 +36,7 @@ export const DropdownContent = styled.div`
   }
 `;
 
-export const DropdownItem = styled.a`
+export const DropdownItem = styled(Link)`
   color: black;
   padding: 12px 16px;
   text-decoration: none;
