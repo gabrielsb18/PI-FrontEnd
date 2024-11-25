@@ -1,4 +1,5 @@
-import {ContainerProfile, ContentProfile, ProfileName, ProfileEmail, ProfileImage, DropdownContent, DropdownItem} from "./ButtonProfile.style";
+import {ContainerProfile, ContentProfile, ProfileName, ProfileEmail, ProfileImage} from "./ButtonProfile.style";
+import DropdownMenu from "../DropdownMenu/DropdownMenu";
 import { useAuth } from "../../contexts/AuthContext";
 
 export function ButtonProfile(){
@@ -16,10 +17,7 @@ export function ButtonProfile(){
                 <img src = "/IconProfile.svg" alt = "Foto de perfil"/>
             </ProfileImage>
 
-            <DropdownContent>
-                <DropdownItem to={"/perfil"}>Conta</DropdownItem>
-                <DropdownItem to={"/login"} onClick={()=> signOut()}>Sair</DropdownItem>
-            </DropdownContent>
+            <DropdownMenu />     
         </ContainerProfile>
     );
-}
+}   
