@@ -1,5 +1,4 @@
 import HeaderNav from "../../components/Header/Header";
-import Logout from "../../components/Logout/Logout";
 
 import {
 	ContainerBody,
@@ -24,7 +23,6 @@ export default function Perfil() {
 				<Salvar>
 					<button>Salvar</button>
 				</Salvar>
-				<Logout />
 			</Main>
 		</ContainerBody>
 	);

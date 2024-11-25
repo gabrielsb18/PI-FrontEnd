@@ -1,7 +1,6 @@
 import AddTask from "../../components/AddTask/AddTask";
 import HeaderNav from "../../components/Header/Header";
 import Select from "../../components/Select/Select";
-import Logout from "../../components/Logout/Logout";
 import { CardTask } from "../../components/CardTasks/CardTasks.jsx";
 import { ToastPopUp } from "../../components/Toast/Toast.jsx";
 import { useEffect, useState } from "react";
@@ -130,7 +129,6 @@ export default function Home() {
                         )}
                 </ContainerTasks>
 			</Main>
-			<Logout />
 			<ToastPopUp />
 		</ContainerBody>
 	);
