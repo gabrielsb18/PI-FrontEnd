@@ -1,30 +1,60 @@
 import HeaderNav from "../../components/Header/Header";
+import { Input } from "../../components/Input/Input.jsx";
+import { MdOutlineEmail, MdOutlineLock } from "react-icons/md";
+import { FiCamera, FiUser } from "react-icons/fi";
 
 import {
 	ContainerBody,
 	Main,
-	InputWrapper,
-	Salvar,
-	Image,
+	FormContainer,
+	ButtonSave,
+    Avatar
 } from "./Perfil.style.js";
 
-export default function Perfil() {
+export default function Perfil({}) {
 	return (
 		<ContainerBody>
-			<HeaderNav />
+			<HeaderNav
+                showSearchBar={false}
+            />
 			<Main>
-				<Image src="/IconProfile.svg" alt="Profile Image" />
-				<InputWrapper>
-					<input placeholder="Nome" />
-				</InputWrapper>
-				<InputWrapper>
-					<input placeholder="Email" />
-				</InputWrapper>
-				<Salvar>
-					<button>Salvar</button>
-				</Salvar>
+                <Avatar>
+				    <img src="/IconProfile.svg" alt="Profile Image" />
+
+                    <label htmlFor="avatar">
+                        <FiCamera />
+
+                        <input
+                            id="avatar"
+                            type="file"
+                        />
+                    </label>
+                </Avatar>
+
+                <FormContainer>
+                        <Input
+                            variant="black"
+                            placeholder="nome"
+                            icon={FiUser}
+                        />
+
+                        <Input
+                            variant="black"
+                            placeholder="email"
+                            icon={MdOutlineEmail}
+                        />
+
+                        <Input
+                            variant="black"
+                            type="password"
+                            placeholder="senha"
+                            icon={MdOutlineLock}
+                        />
+                    
+                    <ButtonSave type="submit">Salvar</ButtonSave>
+                </FormContainer>
+
 			</Main>
 		</ContainerBody>
 	);
 }
-
