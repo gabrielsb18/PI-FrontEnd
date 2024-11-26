@@ -19,6 +19,7 @@ api.interceptors.response.use(
                 if(!refreshToken){
                     return Promise.reject(error);
                 }
+
                 const response = await api.post("/users/renovar", {refreshToken})
                 const {acessToken} = response.data;
 
@@ -28,7 +29,7 @@ api.interceptors.response.use(
 
                 if(error.config){
                     error.config.headers["authorization"]= `Bearer ${acessToken}`; 
-                    return api(error.comfig);          
+                    return api(error.config);          
                 } 
 
             }catch(err){
