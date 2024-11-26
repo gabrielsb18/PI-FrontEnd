@@ -19,28 +19,25 @@ export const Title = styled.div`
         color: #A1A1A1;
         font-weight: 400;
     }
-
-    @media ${device.xs}{
-        margin-bottom: 0;
-        padding: 0 6%;
-    }
 `;
 
 export const FormContainer = styled.div`
     display: flex;
     flex: 1;
     height: 100vh;
+    min-width: 50%;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
     padding: 90px 130px;
-
+    box-sizing: border-box;
+    
     > form {
         display: flex;
         flex-direction: column;
         gap:50px;
         width: 100%;
+        max-width: 400px;
 
         > div:first-child {
             width: 100%;
@@ -63,26 +60,9 @@ export const FormContainer = styled.div`
             gap: 26px;
         }
 
-        @media ${device.xs}{
-            width: 100%;
-            padding: 46px;
-        }
-
-        @media ${device.md}{
-            width: 100%;
-        }
-        
-        @media ${device.lg}{
-            min-width: 400px;
-        }
-
     }
         @media ${device.xs}{
             width: 100%;
-            padding: 0;
-        }       
-
-        @media ${device.lg}{
-            min-width: 400px;
+            padding: 0 46px;
         }
  `;

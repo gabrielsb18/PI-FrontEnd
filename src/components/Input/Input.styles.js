@@ -18,6 +18,7 @@ export const InputWrap = styled.div`
         background:none;
         border:none;
         padding: 20px;
+        font-size: 14px;
     }
 `;
 
