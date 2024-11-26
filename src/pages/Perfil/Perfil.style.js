@@ -1,71 +1,96 @@
 import styled from "styled-components";
+import { device } from "../../constants";
 
 export const ContainerBody = styled.div`
 	background-color: #2a2a2a;
-    height: 100vh;
 `;
 
 export const Main = styled.main`
+	width: 100%;
+    max-width: 25rem;
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
 	flex-direction: column;
-	gap: 32px;
+	gap: 1.75rem;
 	margin: 0 auto;
     margin-top: 4%;
-	width: 33%;
+    height: 100vh;
+    max-height: 100%;
+
+    @media ${device.xs}{
+        padding: 2rem;
+        margin-top: 0;
+    }
 `;
 
-export const InputWrapper = styled.div`
+export const Avatar = styled.div`
+    position: relative;
+    margin: 0 auto 32px;
+    width: 186px;
+    height: 186px;
+
+    > img {
+        width: 12rem;
+        height: 12rem;
+        border-radius: 50%;
+    }
+
+    > label {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 3rem;
+        height: 3rem;
+
+        background-color: ${({ theme }) => theme.COLORS.YELLOW_DEFAULT};
+
+        border-radius: 50%;
+        position: absolute;
+        bottom: 7px;
+        right: 7px;
+
+        cursor: pointer;
+
+        > input {
+            display: none;
+        }
+
+        > svg {
+            width: 1.26rem;
+            height: 1.26rem;
+            color: ${({ theme }) => theme.COLORS.YELLOW_900}
+        }
+    }
+`;
+
+export const FormContainer = styled.form`
 	display: flex;
+    flex-direction: column;
 	justify-content: center;
-	gap: 15px;
 	align-items: center;
-	width: 100%;
-	> label {
-		font-size: 18px;
-	}
-	> input {
-		width: 25rem;
-		height: 46px;
-		border: none;
-		border-radius: 10px;
-		background-color: #414141;
-		padding: 12px;
-		color: #ffffff;
-		font-size: 16px;
-	}
-	> textarea {
-		width: 100%;
-		height: 176px;
-		text-align: flex-start;
-		border: none;
-		resize: none;
-		border-radius: 10px;
-		background-color: #414141;
-		padding: 16px;
-		color: #ffffff;
-		font-size: 16px;
-	}
+    gap: 12px;
+    width: 100%;
+    max-width: 25rem;
 `;
 
-export const Salvar = styled.div`
-	align-items: center;
+export const ButtonSave = styled.button`
 	display: flex;
+	width: 100%;
+    max-width: 25rem;
+	height: 45px;
+	align-items: center;
 	justify-content: center;
 	margin-top: 40px;
-	width: 25rem;
-	> button {
-		background-color: #414141;
-		color: #ffffff;
-		border-radius: 10px;
-		width: 100%;
-		height: 45px;
-		border: none;
-	}
-`;
+	
+	background-color: #414141;
+	color: #ffffff;
+	border-radius: 10px;
+	border: none;
 
-export const Image = styled.img`
-	max-width: 225px;
-	width: 200px;
+    font-size: 16px;
+
+    &:hover {
+        filter: brightness(0.8);
+    }
 `;
