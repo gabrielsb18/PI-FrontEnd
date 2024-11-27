@@ -69,9 +69,16 @@ export const FormContainer = styled.form`
     flex-direction: column;
 	justify-content: center;
 	align-items: center;
-    gap: 12px;
+    gap: 1.25rem;
     width: 100%;
     max-width: 25rem;
+`;
+
+export const InputsWrapper = styled.div`
+    width: 100%;
+   display: flex;
+   flex-direction: column;
+   gap: 12px;
 `;
 
 export const ButtonSave = styled.button`
