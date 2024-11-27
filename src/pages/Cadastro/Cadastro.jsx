@@ -32,15 +32,16 @@ export default function Cadastro() {
 		try {
 			const response = await signUp(data);
             
-			setTimeout(() => {
-                toast.success(response.msg, {
-                    style: {
-                        borderColor: "green",
-                    },
-                });
-            }, 2000);
+            toast.success(response.msg, {
+                style: {
+                    borderColor: "green",
+                },
+            });
 
-            navigate("/login");
+			setTimeout(() => {
+                navigate("/login");
+            }, 1000);
+
 		} catch (error) {
 			toast.error(error.response.data.errors);
 		}
