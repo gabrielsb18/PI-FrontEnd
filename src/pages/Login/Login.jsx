@@ -38,7 +38,7 @@ export default function Login() {
             
 			navigate("/Home");
 		} catch (error) {
-			toast.error(error.response.data.errors);
+			toast.error(error.response.data.msg);
 		}
 	}
 

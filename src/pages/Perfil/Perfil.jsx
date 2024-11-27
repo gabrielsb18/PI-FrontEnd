@@ -8,7 +8,8 @@ import {
 	Main,
 	FormContainer,
 	ButtonSave,
-    Avatar
+    Avatar,
+    InputsWrapper,
 } from "./Perfil.style.js";
 
 export default function Perfil({}) {
@@ -32,6 +33,7 @@ export default function Perfil({}) {
                 </Avatar>
 
                 <FormContainer>
+                    <InputsWrapper>
                         <Input
                             variant="black"
                             placeholder="nome"
@@ -44,12 +46,23 @@ export default function Perfil({}) {
                             icon={MdOutlineEmail}
                         />
 
+                    </InputsWrapper>
+                    <InputsWrapper>
+
                         <Input
                             variant="black"
                             type="password"
                             placeholder="senha"
                             icon={MdOutlineLock}
                         />
+
+                        <Input
+                            variant="black"
+                            type="password"
+                            placeholder="senha"
+                            icon={MdOutlineLock}
+                        />
+                    </InputsWrapper>
                     
                     <ButtonSave type="submit">Salvar</ButtonSave>
                 </FormContainer>
