@@ -6,7 +6,7 @@ import Error404 from '../pages/Error404/Error404'
 export function AuthRoutes(){
     return(
     <Routes>
-        <Route path="/login" element={<Login />} />
+        <Route index element={<Login />} />
         <Route path="/cadastro" element={<Cadastro />} />
         <Route path="*" element = {<Error404 redirect="/login"/>} />
     </Routes >
