@@ -27,7 +27,6 @@ import {
     BackgroundModal,
 } from "./Home.style";
 
-
 export default function Home() {
     const { nome } = useAuth();
 
@@ -57,8 +56,14 @@ export default function Home() {
         }
     };
 
-        getNotes();
-    }, [])
+    useEffect(() => {
+        fetchNotes(debouncedSearch);
+    }, [debouncedSearch]);
+
+    const handleSearch = (term) => {
+        setSearchTerm(term);
+        setIsSearching(term.trim() !== "");
+    };
 
     const updateNote = (updateNote) => {
         setNotes((prevNotes) => 
