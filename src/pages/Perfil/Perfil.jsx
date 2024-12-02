@@ -60,7 +60,24 @@ export default function Perfil() {
 
                 dataUser.avatar = response.data.avatar;
             }
-    }
+            
+            if(data.nome !== nome || data.email !== emailUser){
+                const response = await api.put(`/users/${id}`, data);
+
+                toast.success(response.data.msg, {
+                    style: {
+                        borderColor: "green",
+                        position: "top-right",
+                    },
+                });
+            }
+            
+        } catch (error) {
+            if(error.response){
+                toast.error(error.response.data.msg)
+            } else {
+                toast.error("Erro ao atualizar usuário")
+            }
 
 	return (
 		<ContainerBody>
