@@ -26,7 +26,7 @@ import {
 
 
 export default function Home() {
-    const { userId, nome } = useAuth();
+    const { nome } = useAuth();
 
     const [modalOpen, setModalOpen] = useState(false);
     const [currentNote, setCurrentNote] = useState(null);
