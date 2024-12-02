@@ -35,11 +35,27 @@ export default function Home() {
     const [currentNote, setCurrentNote] = useState(null);
     const [notes, setNotes] = useState([]);
 
-    useEffect(()=> {
-        async function getNotes(){
-            const response = await api.get(`/notes/${userId}`)
-            setNotes(response.data)
+    const [searchTerm, setSearchTerm] = useState("");
+    const [isSearching, setIsSearching] = useState(false);
+    const debouncedSearch = useDebounce(searchTerm, 500);
+
+    const fetchNotes = async (searchTerm = "") => {
+        
+        try {
+            if (searchTerm.trim() !== "") {
+                const response = await api.get(`/notes/search`, {
+                    params: { term: searchTerm },
+                });
+
+                setNotes(response.data);
+            } else {
+                const response = await api.get(`/notes/`);
+                setNotes(response.data);
+            }
+        } catch (error) {
+           toast.error(error.response.data.msg)
         }
+    };
 
         getNotes();
     }, [])
