@@ -38,6 +38,11 @@ export default function Perfil() {
         resolver: zodResolver(updateUserSchema)
     });
 
+    useEffect(() => {
+        const avatarUrl = avatar ? `${api.defaults.baseURL}/files/${avatar}` : placeholderImageUser;
+        setAvatarUser(avatarUrl);
+    }, [avatar]);
+
     const onUpdate = async (data) => {
         try {
 
