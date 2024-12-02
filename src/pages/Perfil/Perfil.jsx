@@ -39,21 +39,27 @@ export default function Perfil() {
     });
 
     const onUpdate = async (data) => {
-        e.event.preventDefault();
-
         try {
-            const response = await api.put("/users/", data);
 
-            toast.sucess(response.msg, {
-                style: {
-                    borderColor: "green",
-                    position: "top-right",
-                },
-            })
+            if(avatarFile){
+                const fileUpload = new FormData();
+                fileUpload.append("avatar", avatarFile);
             
-        }catch (error) {
-            toast.error(error.response.msg)
-        }
+                const response = await api.patch("/users/avatar", fileUpload, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data',
+                    }
+                })
+
+                toast.success(response.data.msg, {
+                    style: {
+                        borderColor: "green",
+                        position: "top-right",
+                    },
+                });
+
+                dataUser.avatar = response.data.avatar;
+            }
     }
 
 	return (
