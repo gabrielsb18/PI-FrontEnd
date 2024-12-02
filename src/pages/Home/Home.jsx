@@ -89,70 +89,82 @@ export default function Home() {
 
 	return (
 		<ContainerBody>
-			<HeaderNav />
-			<Main>
-				<HeaderTitle>
-					<h1>
-						Olá <strong>{nome}</strong> 👋
-					</h1>
-					<p>Adicione uma nova tarefa</p>
-				</HeaderTitle>
-				<ContainerGraphics>
-					<ContentGraphicsOne>
-						<p>Seu Desempenho</p>
-					</ContentGraphicsOne>
-					<ContentGraphicTwo>
-						<p>
-							Tarefas <br /> <strong>Pendentes</strong>
-						</p>
-						<h1>15</h1>
-					</ContentGraphicTwo>
-					<ContentGraphicTree>
-						<p>
-							Tarefas <br /> <strong>Concluídas</strong>
-						</p>
-						<h1>+80</h1>
-					</ContentGraphicTree>
-				</ContainerGraphics>
-				<HeaderTasks>
-					<ContainerTitle>
-						<h1>Suas Tarefas</h1>
-                        <ActionsButtons>
-                            <AddTask />
-                            <Select />
-                        </ActionsButtons>
-					</ContainerTitle>
-				</HeaderTasks>
+			<HeaderNav onSearch={handleSearch} />
+			{isSearching ? (
+                <SearchNotes
+                    updateNote={updateNote}
+                    deleteNote={deleteNote}
+                    notes={notes}
+					modalOpen={modalOpen}
+					currentNote={currentNote}
+					setModalOpen={setModalOpen}
+					setCurrentNote={setCurrentNote}
+				/>
+			) : (
+				<Main>
+					<HeaderTitle>
+						<h1>
+							Olá <strong>{nome}</strong> 👋
+						</h1>
+						<p>Adicione uma nova tarefa</p>
+					</HeaderTitle>
+					<ContainerGraphics>
+						<ContentGraphicsOne>
+							<p>Seu Desempenho</p>
+						</ContentGraphicsOne>
+						<ContentGraphicTwo>
+							<p>
+								Tarefas <br /> <strong>Pendentes</strong>
+							</p>
+							<h1>15</h1>
+						</ContentGraphicTwo>
+						<ContentGraphicTree>
+							<p>
+								Tarefas <br /> <strong>Concluídas</strong>
+							</p>
+							<h1>+80</h1>
+						</ContentGraphicTree>
+					</ContainerGraphics>
+					<HeaderTasks>
+						<ContainerTitle>
+							<h1>Suas Tarefas</h1>
+							<ActionsButtons>
+								<AddTask />
+								<Select />
+							</ActionsButtons>
+						</ContainerTitle>
+					</HeaderTasks>
 
-                <ContainerTasks>
-                    <ContainerCardsTasks>
-                        {notes.map((note => (
-                            <CardTask
-                                title={note.titulo}
-                                description={note.descricao}
-                                status={note.status}
-                                onClick={()=>handleCardClick(note)}
-                                key={note._id}
-                            />
-                        )))}
-                    </ContainerCardsTasks>
-                        {currentNote && modalOpen && (
-                            <>
-                                <BackgroundModal onClick={handleCloseModal}/>
-                                <CardTaskModal
-                                    onUpdate={updateNote}
-                                    onDelete={deleteNote}
-                                    noteId={currentNote._id}
-                                    isOpen={modalOpen}
-                                    onClose={handleCloseModal}
-                                    key={currentNote._id}
-                                    title={currentNote.titulo}
-                                    content={currentNote.descricao}
-                                />
-                            </>
-                        )}
-                </ContainerTasks>
-			</Main>
+					<ContainerTasks>
+						<ContainerCardsTasks>
+							{notes.map((note) => (
+								<CardTask
+									title={note.titulo}
+									description={note.descricao}
+									status={note.status}
+									onClick={() => handleCardClick(note)}
+									key={note._id}
+								/>
+							))}
+						</ContainerCardsTasks>
+						{currentNote && modalOpen && (
+							<>
+								<BackgroundModal onClick={handleCloseModal} />
+								<CardTaskModal
+									onUpdate={updateNote}
+									onDelete={deleteNote}
+									noteId={currentNote._id}
+									isOpen={modalOpen}
+									onClose={handleCloseModal}
+									key={currentNote._id}
+									title={currentNote.titulo}
+									content={currentNote.descricao}
+								/>
+							</>
+						)}
+					</ContainerTasks>
+				</Main>
+			)}
 			<ToastPopUp />
 		</ContainerBody>
 	);
