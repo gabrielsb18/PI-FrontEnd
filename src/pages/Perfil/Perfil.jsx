@@ -3,7 +3,7 @@ import { Input } from "../../components/Input/Input.jsx";
 import { MdOutlineEmail, MdOutlineLock } from "react-icons/md";
 import { FiCamera, FiUser } from "react-icons/fi";
 import { ToastPopUp } from "../../components/Toast/Toast.jsx"
-import placeholderImageUser from "../../../public/placeHolder.webp"
+import placeholderImageUser from "/placeHolder.webp"
 
 import {
 	ContainerBody,
