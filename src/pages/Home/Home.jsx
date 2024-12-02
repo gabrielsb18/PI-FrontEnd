@@ -2,11 +2,14 @@ import AddTask from "../../components/AddTask/AddTask";
 import HeaderNav from "../../components/Header/Header";
 import Select from "../../components/Select/Select";
 import { CardTask } from "../../components/CardTasks/CardTasks.jsx";
+import { toast } from "sonner";
 import { ToastPopUp } from "../../components/Toast/Toast.jsx";
 import { useEffect, useState } from "react";
 import { useAuth } from "../../contexts/AuthContext.jsx";
 import { api } from "../../services/api.js";
 import { CardTaskModal } from "../../components/Modal/CardTaskModal.jsx";
+import { SearchNotes } from "../../components/SearchNotes/SearchNotes.jsx";
+import { useDebounce } from "../../hooks/useDebounce.js";
 
 import {
 	ContainerBody,
