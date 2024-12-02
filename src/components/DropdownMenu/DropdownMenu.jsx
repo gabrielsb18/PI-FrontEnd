@@ -13,11 +13,11 @@ export function DropdownMenuItem({ icon: Icon, children, ...rest }) {
 }
 
 export default function DropdownMenu() {
-	const { signOut } = useAuth();
+	const { signOut, userId } = useAuth();
 
 	return (
 		<DropdownContent>
-			<DropdownMenuItem icon={FiUser} to={"/perfil"}>
+			<DropdownMenuItem icon={FiUser} to={`/perfil/${userId}`}>
 				Perfil
 			</DropdownMenuItem>
 

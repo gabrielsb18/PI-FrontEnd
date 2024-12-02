@@ -9,7 +9,7 @@ export function AppRoutes() {
 		<Routes>
 			<Route path="/home" element={<Home />} />
 			<Route path="/novanota" element={<NovaNota />} />
-			<Route path="/perfil" element={<Perfil />} />
+			<Route path="/perfil/:id" element={<Perfil />} />
             <Route path="*" element = {<Error404 redirect="/home"/>} />
 		</Routes>
 	);
