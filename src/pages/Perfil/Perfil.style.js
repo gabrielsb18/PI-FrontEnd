@@ -31,9 +31,10 @@ export const Avatar = styled.div`
     height: 186px;
 
     > img {
-        width: 12rem;
-        height: 12rem;
+        width: 100%;
+        height: 100%;
         border-radius: 50%;
+        object-fit: cover; 
     }
 
     > label {
@@ -51,6 +52,11 @@ export const Avatar = styled.div`
         right: 7px;
 
         cursor: pointer;
+        transition: ease-in-out 0.2s;
+        
+        &:hover{
+            filter: brightness(0.8);
+        }
 
         > input {
             display: none;
