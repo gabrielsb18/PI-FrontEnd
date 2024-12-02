@@ -104,7 +104,8 @@ export default function Perfil() {
             />
 			<Main>
                 <Avatar>
-				    <img src="/IconProfile.svg" alt="Profile Image" />
+                    <img src={avatarUser} alt="Profile Image" />
+
 
                     <label htmlFor="avatar">
                         <FiCamera />
@@ -112,6 +113,7 @@ export default function Perfil() {
                         <input
                             id="avatar"
                             type="file"
+                            onChange={handleChangeAvatar}
                         />
                     </label>
                 </Avatar>
@@ -148,7 +150,7 @@ export default function Perfil() {
                         <Input
                             variant="black"
                             type="password"
-                            placeholder="senha antiga"
+                            placeholder="senha atual"
                             icon={MdOutlineLock}
                             {...register("senhaAntiga")}
                             error={errors.senhaAntiga?.message}
@@ -159,6 +161,7 @@ export default function Perfil() {
                 </FormContainer>
 
 			</Main>
+            <ToastPopUp />
 		</ContainerBody>
 	);
 }
