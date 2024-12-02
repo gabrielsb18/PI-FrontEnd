@@ -27,7 +27,8 @@ export default function Perfil() {
     const { nome, emailUser, avatar, data:dataUser} = useAuth();
     const { id } = useParams();
 
-    const {} = useParams();
+    const [avatarUser, setAvatarUser] = useState(null);
+    const [avatarFile, setAvatarFile] = useState(null);
 
     const {register, handleSubmit, formState: {errors}} = useForm({
         values: {
