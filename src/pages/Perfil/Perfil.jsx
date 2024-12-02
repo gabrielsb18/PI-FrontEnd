@@ -2,6 +2,8 @@ import HeaderNav from "../../components/Header/Header";
 import { Input } from "../../components/Input/Input.jsx";
 import { MdOutlineEmail, MdOutlineLock } from "react-icons/md";
 import { FiCamera, FiUser } from "react-icons/fi";
+import { ToastPopUp } from "../../components/Toast/Toast.jsx"
+import placeholderImageUser from "../../../public/placeHolder.webp"
 
 import {
 	ContainerBody,
@@ -11,10 +13,15 @@ import {
     Avatar,
     InputsWrapper,
 } from "./Perfil.style.js";
+
+import { toast } from "sonner";
+import { api } from "../../services/api.js";
+import { updateUserSchema } from "../../utils/updateUserSchema.js"
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { updateUserSchema } from "../../utils/updateUserSchema.js"
+import { useAuth } from "../../contexts/AuthContext.jsx";
 import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 export default function Perfil() {
 
