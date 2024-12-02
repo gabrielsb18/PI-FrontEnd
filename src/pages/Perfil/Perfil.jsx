@@ -29,7 +29,11 @@ export default function Perfil() {
 
     const {} = useParams();
 
-    const {register, handleSubmit, formState: {errors}, value} = useForm({
+    const {register, handleSubmit, formState: {errors}} = useForm({
+        values: {
+            nome: nome,
+            email: emailUser,
+        },
         resolver: zodResolver(updateUserSchema)
     });
 
