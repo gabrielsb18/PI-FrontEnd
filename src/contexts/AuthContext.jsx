@@ -17,10 +17,11 @@ function AuthProvider({ children }) {
 							authorization: `Bearer ${JSON.parse(acessToken)}`,
 						},
 					});
-                    const { email: emailUser, nome, userId }= response.data;
+                    const { avatar, email: emailUser, nome, userId }= response.data;
 
                     setData(prevstate => ({
                         ...prevstate, 
+                        avatar,
                         emailUser,
                         nome,
                         userId, 
@@ -39,6 +40,7 @@ function AuthProvider({ children }) {
 			const response = await api.post("/users/login", data);
 
 			const {
+                avatar,
                 nome,
 				acessToken,
 				refreshToken,
@@ -51,7 +53,7 @@ function AuthProvider({ children }) {
 
 			api.defaults.headers.common["authorization"] = `Bearer ${acessToken}`;
 
-			setData({ acessToken, refreshToken, userId, emailUser, nome });
+			setData({ avatar, acessToken, refreshToken, userId, emailUser, nome });
 
 			return response.data;
 		} catch (error) {
@@ -93,6 +95,8 @@ function AuthProvider({ children }) {
 		signIn,
 		signUp,
 		signOut,
+        data,
+        avatar: data.avatar,
         nome: data.nome, 
 		emailUser: data.emailUser,
 		acessToken: data.acessToken,

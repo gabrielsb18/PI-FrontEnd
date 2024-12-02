@@ -50,8 +50,9 @@ export const ProfileImage = styled.div`
     overflow: hidden;
 
     > img {
-        max-width: max-content;
-        height: auto;
+        height: 100%;
         width: 100%;
+        object-fit: cover;
+        border-radius: 100%;
     }
 `;

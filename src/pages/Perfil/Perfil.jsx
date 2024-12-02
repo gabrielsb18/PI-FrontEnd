@@ -2,6 +2,8 @@ import HeaderNav from "../../components/Header/Header";
 import { Input } from "../../components/Input/Input.jsx";
 import { MdOutlineEmail, MdOutlineLock } from "react-icons/md";
 import { FiCamera, FiUser } from "react-icons/fi";
+import { ToastPopUp } from "../../components/Toast/Toast.jsx"
+import placeholderImageUser from "../../../public/placeHolder.webp"
 
 import {
 	ContainerBody,
@@ -11,36 +13,89 @@ import {
     Avatar,
     InputsWrapper,
 } from "./Perfil.style.js";
+
+import { toast } from "sonner";
+import { api } from "../../services/api.js";
+import { updateUserSchema } from "../../utils/updateUserSchema.js"
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { updateUserSchema } from "../../utils/updateUserSchema.js"
+import { useAuth } from "../../contexts/AuthContext.jsx";
 import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 export default function Perfil() {
+    const { nome, emailUser, avatar, data:dataUser} = useAuth();
+    const { id } = useParams();
 
-    const {} = useParams();
+    const [avatarUser, setAvatarUser] = useState(null);
+    const [avatarFile, setAvatarFile] = useState(null);
 
-    const {register, handleSubmit, formState: {errors}, value} = useForm({
+    const {register, handleSubmit, formState: {errors}} = useForm({
+        values: {
+            nome: nome,
+            email: emailUser,
+        },
         resolver: zodResolver(updateUserSchema)
     });
 
+    useEffect(() => {
+        const avatarUrl = avatar ? `${api.defaults.baseURL}/files/${avatar}` : placeholderImageUser;
+        setAvatarUser(avatarUrl);
+    }, [avatar]);
+
     const onUpdate = async (data) => {
-        e.event.preventDefault();
-
         try {
-            const response = await api.put("/users/", data);
 
-            toast.sucess(response.msg, {
-                style: {
-                    borderColor: "green",
-                    position: "top-right",
-                },
-            })
+            if(avatarFile){
+                const fileUpload = new FormData();
+                fileUpload.append("avatar", avatarFile);
             
-        }catch (error) {
-            toast.error(error.response.msg)
-        }
-    }
+                const response = await api.patch("/users/avatar", fileUpload, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data',
+                    }
+                })
+
+                toast.success(response.data.msg, {
+                    style: {
+                        borderColor: "green",
+                        position: "top-right",
+                    },
+                });
+
+                dataUser.avatar = response.data.avatar;
+            }
+            
+            if(data.nome !== nome || data.email !== emailUser){
+                const response = await api.put(`/users/${id}`, data);
+
+                toast.success(response.data.msg, {
+                    style: {
+                        borderColor: "green",
+                        position: "top-right",
+                    },
+                });
+            }
+            
+        } catch (error) {
+            if(error.response){
+                toast.error(error.response.data.msg)
+            } else {
+                toast.error("Erro ao atualizar usuário")
+            }
+        };
+    };
+
+    const handleChangeAvatar = (event) => {
+        const file = event.target.files[0];
+
+        if (file) {
+            setAvatarFile(file);
+    
+            const imagePreview = URL.createObjectURL(file);
+            setAvatarUser(imagePreview);
+        };
+    };
 
 	return (
 		<ContainerBody>
@@ -49,7 +104,8 @@ export default function Perfil() {
             />
 			<Main>
                 <Avatar>
-				    <img src="/IconProfile.svg" alt="Profile Image" />
+                    <img src={avatarUser} alt="Profile Image" />
+
 
                     <label htmlFor="avatar">
                         <FiCamera />
@@ -57,6 +113,7 @@ export default function Perfil() {
                         <input
                             id="avatar"
                             type="file"
+                            onChange={handleChangeAvatar}
                         />
                     </label>
                 </Avatar>
@@ -93,7 +150,7 @@ export default function Perfil() {
                         <Input
                             variant="black"
                             type="password"
-                            placeholder="senha antiga"
+                            placeholder="senha atual"
                             icon={MdOutlineLock}
                             {...register("senhaAntiga")}
                             error={errors.senhaAntiga?.message}
@@ -104,6 +161,7 @@ export default function Perfil() {
                 </FormContainer>
 
 			</Main>
+            <ToastPopUp />
 		</ContainerBody>
 	);
 }
