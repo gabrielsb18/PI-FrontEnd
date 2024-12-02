@@ -24,6 +24,8 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 export default function Perfil() {
+    const { nome, emailUser, avatar, data:dataUser} = useAuth();
+    const { id } = useParams();
 
     const {} = useParams();
 
