@@ -78,6 +78,19 @@ export default function Perfil() {
             } else {
                 toast.error("Erro ao atualizar usuário")
             }
+        };
+    };
+
+    const handleChangeAvatar = (event) => {
+        const file = event.target.files[0];
+
+        if (file) {
+            setAvatarFile(file);
+    
+            const imagePreview = URL.createObjectURL(file);
+            setAvatarUser(imagePreview);
+        };
+    };
 
 	return (
 		<ContainerBody>
