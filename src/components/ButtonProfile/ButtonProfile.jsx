@@ -1,6 +1,6 @@
 import {ContainerProfile, ContentProfile, ProfileName, ProfileEmail, ProfileImage} from "./ButtonProfile.style";
 import DropdownMenu from "../DropdownMenu/DropdownMenu";
-import placeholderImageUser from "../../../public/placeHolder.webp"
+import placeholderImageUser from "/placeHolder.webp"
 import { useAuth } from "../../contexts/AuthContext";
 import { api } from "../../services/api";
 

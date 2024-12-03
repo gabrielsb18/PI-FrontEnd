@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const CardTasks = styled.div`
-    min-height: 168px;
+    height: 168px;
     min-width: 272px;
 
     cursor: pointer;
@@ -33,7 +33,6 @@ export const CardTasks = styled.div`
         font-weight: 700;
         color: #fff;
 
-        overflow: hidden;
         text-overflow: ellipsis;
         white-space: normal;
 
@@ -46,9 +45,9 @@ export const CardTasks = styled.div`
     > p {
         color: #fff;
         font-size: 14px;
-        font-weight: 300;
+        font-weight: 400;   
 
-        overflow: hidden;
+        overflow-y: hidden;
         text-overflow: ellipsis;
         white-space: normal;
 
