@@ -10,15 +10,12 @@ import { api } from "../../services/api.js";
 import { CardTaskModal } from "../../components/Modal/CardTaskModal.jsx";
 import { SearchNotes } from "../../components/SearchNotes/SearchNotes.jsx";
 import { useDebounce } from "../../hooks/useDebounce.js";
+import { Metrics } from "../../components/Metrics/index.jsx";
 
 import {
 	ContainerBody,
 	Main,
-	ContainerGraphics,
-	ContentGraphicsOne,
-	ContentGraphicTwo,
 	HeaderTitle,
-	ContentGraphicTree,
 	HeaderTasks,
     ActionsButtons,
 	ContainerTitle,
@@ -26,6 +23,7 @@ import {
     ContainerTasks,
     BackgroundModal,
 } from "./Home.style";
+
 
 export default function Home() {
     const { nome } = useAuth();
@@ -39,7 +37,6 @@ export default function Home() {
     const debouncedSearch = useDebounce(searchTerm, 500);
 
     const fetchNotes = async (searchTerm = "") => {
-        
         try {
             if (searchTerm.trim() !== "") {
                 const response = await api.get(`/notes/search`, {
@@ -108,23 +105,7 @@ export default function Home() {
 						</h1>
 						<p>Adicione uma nova tarefa</p>
 					</HeaderTitle>
-					<ContainerGraphics>
-						<ContentGraphicsOne>
-							<p>Seu Desempenho</p>
-						</ContentGraphicsOne>
-						<ContentGraphicTwo>
-							<p>
-								Tarefas <br /> <strong>Pendentes</strong>
-							</p>
-							<h1>15</h1>
-						</ContentGraphicTwo>
-						<ContentGraphicTree>
-							<p>
-								Tarefas <br /> <strong>Concluídas</strong>
-							</p>
-							<h1>+80</h1>
-						</ContentGraphicTree>
-					</ContainerGraphics>
+					<Metrics/>
 					<HeaderTasks>
 						<ContainerTitle>
 							<h1>Suas Tarefas</h1>
