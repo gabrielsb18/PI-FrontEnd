@@ -29,15 +29,15 @@ export const ContentProfile = styled.div`
 `;
 
 export const ProfileName = styled.p`
-    font-size: 13px;
+    font-size: 14px;
     color: #FFFFFF;
     font-weight: 800;
 `;
 
 export const ProfileEmail = styled.p`
-font-size: 13px;
+font-size: 12px;
     color: #FFFFFF;
-    font-weight: 300;
+    font-weight: 500;
 `;
 
 export const ProfileImage = styled.div`
