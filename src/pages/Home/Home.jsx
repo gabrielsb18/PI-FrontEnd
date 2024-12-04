@@ -1,15 +1,18 @@
+import { useEffect, useState } from "react";
+import { toast } from "sonner";
+import { useAuth } from "../../contexts/AuthContext.jsx";
+
 import AddTask from "../../components/AddTask/AddTask";
 import HeaderNav from "../../components/Header/Header";
 import Select from "../../components/Select/Select";
 import { CardTask } from "../../components/CardTasks/CardTasks.jsx";
-import { toast } from "sonner";
 import { ToastPopUp } from "../../components/Toast/Toast.jsx";
-import { useEffect, useState } from "react";
-import { useAuth } from "../../contexts/AuthContext.jsx";
-import { CardTaskModal } from "../../components/Modal/CardTaskModal.jsx";
 import { SearchNotes } from "../../components/SearchNotes/SearchNotes.jsx";
-import { useDebounce } from "../../hooks/useDebounce.js";
+import { CardTaskModal } from "../../components/Modal/CardTaskModal.jsx";
 import { Metrics } from "../../components/Metrics/index.jsx";
+
+import { getNotes, searchNotes } from "../../services/notesService.js";
+import { useDebounce } from "../../hooks/useDebounce.js";
 
 import {
 	ContainerBody,
@@ -22,7 +25,6 @@ import {
     ContainerTasks,
     BackgroundModal,
 } from "./Home.style";
-import { getNotes, searchNotes } from "../../services/notesService.js";
 
 export default function Home() {
     const { nome } = useAuth();
