@@ -6,7 +6,6 @@ import { toast } from "sonner";
 import { ToastPopUp } from "../../components/Toast/Toast.jsx";
 import { useEffect, useState } from "react";
 import { useAuth } from "../../contexts/AuthContext.jsx";
-import { api } from "../../services/api.js";
 import { CardTaskModal } from "../../components/Modal/CardTaskModal.jsx";
 import { SearchNotes } from "../../components/SearchNotes/SearchNotes.jsx";
 import { useDebounce } from "../../hooks/useDebounce.js";
@@ -23,7 +22,7 @@ import {
     ContainerTasks,
     BackgroundModal,
 } from "./Home.style";
-
+import { getNotes, searchNotes } from "../../services/notesService.js";
 
 export default function Home() {
     const { nome } = useAuth();
@@ -39,17 +38,14 @@ export default function Home() {
     const fetchNotes = async (searchTerm = "") => {
         try {
             if (searchTerm.trim() !== "") {
-                const response = await api.get(`/notes/search`, {
-                    params: { term: searchTerm },
-                });
-
-                setNotes(response.data);
+                const response = await searchNotes(searchTerm);
+                setNotes(response);
             } else {
-                const response = await api.get(`/notes/`);
-                setNotes(response.data);
+                const response = await getNotes();
+				setNotes(response);
             }
         } catch (error) {
-           toast.error(error.response.data.msg)
+           toast.error(error.message)
         }
     };
 
