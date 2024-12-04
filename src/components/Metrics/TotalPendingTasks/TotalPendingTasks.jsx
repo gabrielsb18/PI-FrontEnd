@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { ContentGraphicTwo } from "./TotalPendingTasks.styles.js";
 import { getMetrics } from "../../../services/metricsService.js";
+import { toast } from "sonner";
 
 export function TotalPendingTasks() {
     const [totalTasks, setTotaltasks] = useState();
@@ -16,7 +17,6 @@ export function TotalPendingTasks() {
         }
 
         getTotalPendingTasks();
-
     }, [totalTasks])
 
 	return (
