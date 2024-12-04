@@ -3,13 +3,13 @@ import { api } from "./api";
 async function getNotes() {
     return await api.get("/notes")
         .then((response) => {
-            return response.data
+            return { sucess: true, data: response.data }
         })
         .catch((error) => {
             if (error.response) {
-                return error.response.data.msg
+                return { sucess: false, msg: error.response.data.msg }
             } else {
-                throw new Error('Erro ao buscar notas');
+                return { sucess: false, msg: "Erro ao buscar notas" }
             }
         })
 }
@@ -17,13 +17,13 @@ async function getNotes() {
 async function putNote(noteId, updatedNote) {
     return await api.put(`/notes/${noteId}`, updatedNote)
         .then((response) => {
-            return response.data
+            return { sucess: true, data: response.data }
         })
         .catch((error) => {
             if (error.response) {
-                return error.response.data.msg
+                return { sucess: false, msg: error.response.data.msg }
             } else {
-                throw new Error('Erro ao atualizar nota');
+                return { sucess: false, msg: "Erro ao atualizar nota" }
             }
         })
 }
@@ -31,13 +31,13 @@ async function putNote(noteId, updatedNote) {
 async function deleteNote(noteId) {
     return await api.delete(`/notes/${noteId}`)
         .then((response) => {
-            return response.data
+            return { sucess: true, data: response.data }
         })
         .catch((error) => {
             if (error.response) {
-                return error.response.data.msg
+                return { sucess: false, msg: error.response.data.msg }
             } else {
-                throw new Error("Erro ao deletar nota")
+                return { sucess: false, msg: "Erro ao deletar nota" }
             }
         })
 }
@@ -49,14 +49,14 @@ async function searchNotes(searchTerm) {
         }
     })
         .then((response) => {
-            return response.data
+            return { sucess: true, data: response.data }
         })
         .catch((error) => {
             if (error.response) {
-                return error.response.data.msg
+                return { sucess: false, msg: error.response.data.msg }
             } else {
-                throw new Error("Erro ao pesquisar entre as notas")
-           }
+                return { sucess: false, msg: "Erro ao buscar notas" }
+            }
         })
 }
 
