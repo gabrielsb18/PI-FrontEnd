@@ -33,7 +33,7 @@ function AuthProvider({ children }) {
             fetchUserData();
         } ;
 
-    },[]);
+    },[data.avatar]);	
 
 	async function signIn(data) {
 		try {
