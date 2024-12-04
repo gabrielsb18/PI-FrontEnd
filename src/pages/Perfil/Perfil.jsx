@@ -24,7 +24,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 export default function Perfil() {
-    const { nome, emailUser, avatar, data:dataUser} = useAuth();
+    const { nome, emailUser, avatar, setData} = useAuth();
     const { id } = useParams();
 
     const [avatarUser, setAvatarUser] = useState(null);
@@ -63,11 +63,13 @@ export default function Perfil() {
                     },
                 });
 
-                dataUser.avatar = response.data.avatar;
+                setData((prevstate) => ({...prevstate, avatar: response.data.avatar}));
             }
             
             if(data.nome !== nome || data.email !== emailUser){
                 const response = await api.put(`/users/${id}`, data);
+
+                setData((prevstate) => ({...prevstate, nome: response.data.nome, emailUser: response.data.email}));
 
                 toast.success(response.data.msg, {
                     style: {

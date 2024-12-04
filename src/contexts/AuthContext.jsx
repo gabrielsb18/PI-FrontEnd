@@ -96,6 +96,7 @@ function AuthProvider({ children }) {
 		signUp,
 		signOut,
         data,
+		setData,
         avatar: data.avatar,
         nome: data.nome, 
 		emailUser: data.emailUser,
