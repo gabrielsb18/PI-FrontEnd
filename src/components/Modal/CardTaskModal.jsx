@@ -1,9 +1,6 @@
 import { useState } from "react";
 import {ModalTask, ContainerModal, TitleTask, ContentTask, ButtonTrash, ButtonCloseNote, ContainerButtons, ActionsButtons, ButtonChecked } from "./CardTaskModal.style.js";
 import { toast } from "sonner";
-
-import { ToastPopUp } from "../../components/Toast/Toast.jsx";
-import { api } from "../../services/api.js";
 import { useAuth } from "../../contexts/AuthContext.jsx";
 import { deleteNote, putNote } from "../../services/notesService.js";
 
@@ -17,14 +14,22 @@ export function CardTaskModal ({title:initialTitle, content:initialContent, note
     async function handleRemove() {
 		try {
 			const response = await deleteNote(noteId);
-			onDelete(noteId);
-			onClose();
 
-			toast.success(response.msg, {
-				style: {
-					borderColor: "green",
-				},
-			});
+            if(!response.sucess){
+                toast.error(response.msg);
+            }
+
+            if(response.sucess){
+                toast.success(response.data.msg, {
+                    style: {
+                        borderColor: "green",
+                    },
+                });
+                
+                onDelete(noteId);
+                onClose();
+            }
+
 		} catch (error) {
 			toast.error(error.message);
 		}
@@ -47,45 +52,57 @@ export function CardTaskModal ({title:initialTitle, content:initialContent, note
 
 			const response = await putNote(noteId, updatedNote);
 
-			onUpdate(updatedNote);
+            if(!response.sucess){
+                toast.error(response.msg);
+            }
 
-			onClose();
-			toast.success(response.msg, {
-				style: {
-					borderColor: "green",
-				},
-			});
+            if(response.sucess){
+                onUpdate(updatedNote);
+                onClose();
+
+                toast.success(response.data.msg, {
+                    style: {
+                        borderColor: "green",
+                    },
+                });
+            }
+
 		} catch (error) {
 			toast.error(error.message);
 		}
 	}
 
-    async function handleComplete(){
-        try {
-            const updatedNote = {
-                _id: noteId,
-                titulo: title,
-                descricao: content, 
-                status: 'concluida',
-                usuario: userId
+    async function handleComplete() {
+		try {
+			const updatedNote = {
+				_id: noteId,
+				titulo: title,
+				descricao: content,
+				status: "concluida",
+				usuario: userId,
+			};
+
+			const response = await putNote(noteId, updatedNote);
+
+            if(!response.sucess){
+                toast.error(response.msg);
             }
 
-            await api.put(`notes/${noteId}`, updatedNote);
-
-            onUpdate(updatedNote);
-            setStatus('concluída');
-
-            onClose();
-
-                toast.success('Tarefa marcada como concluída!', {
+            if(response.sucess){
+                toast.success(response.data.msg, {
                     style: {
                         borderColor: "green",
-                    }
+                    },
                 });
-        } catch (error){
-            toast.error('Erro ao atualizar nota');
-        }
-    }
+			    onUpdate(updatedNote);
+                setStatus("concluída");
+                onClose();
+            }
+
+		} catch (error) {
+			toast.error(error.message);
+		}
+	}
 
     if(!isOpen) return null;
 
@@ -120,7 +137,6 @@ export function CardTaskModal ({title:initialTitle, content:initialContent, note
                             Fechar
                     </ButtonCloseNote>
             </ContainerButtons>
-            <ToastPopUp/>
         </ContainerModal>
     )
 }
