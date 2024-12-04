@@ -66,7 +66,7 @@ export default function Perfil() {
                 setData((prevstate) => ({...prevstate, avatar: response.data.avatar}));
             }
             
-            if(data.nome !== nome || data.email !== emailUser){
+            if(data.nome !== nome || data.email !== emailUser || data.senha || data.senha_antiga){
                 const response = await api.put(`/users/${id}`, data);
 
                 setData((prevstate) => ({...prevstate, nome: response.data.nome, emailUser: response.data.email}));
@@ -143,19 +143,18 @@ export default function Perfil() {
                         <Input
                             variant="black"
                             type="password"
-                            placeholder="senha"
+                            placeholder="Digite sua senha atual"
                             icon={MdOutlineLock}
-                            {...register("senha")}
-                            error={errors.senha?.message}
+                            {...register("senha_antiga")}
+                            error={errors.senha_antiga?.message}
                         />
-
                         <Input
                             variant="black"
                             type="password"
-                            placeholder="senha atual"
+                            placeholder="Digite sua senha nova"
                             icon={MdOutlineLock}
-                            {...register("senhaAntiga")}
-                            error={errors.senhaAntiga?.message}
+                            {...register("senha")}
+                            error={errors.senha?.message}
                         />
                     </InputsWrapper>
 
