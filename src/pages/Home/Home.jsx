@@ -39,10 +39,26 @@ export default function Home() {
         try {
             if (searchTerm.trim() !== "") {
                 const response = await searchNotes(searchTerm);
-                setNotes(response);
+
+				if(!response.sucess){
+					toast.error(response.msg);
+				}
+
+				if(response.sucess){
+					setNotes(response.data);
+				}
+
             } else {
                 const response = await getNotes();
-				setNotes(response);
+				
+				if(!response.sucess){
+					toast.error(response.msg);
+				}
+
+				if(response.sucess){
+					setNotes(response.data);
+				}
+
             }
         } catch (error) {
            toast.error(error.message)
