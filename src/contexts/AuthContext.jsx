@@ -33,7 +33,7 @@ function AuthProvider({ children }) {
             fetchUserData();
         } ;
 
-    },[]);
+    },[data.avatar]);	
 
 	async function signIn(data) {
 		try {
@@ -96,6 +96,7 @@ function AuthProvider({ children }) {
 		signUp,
 		signOut,
         data,
+		setData,
         avatar: data.avatar,
         nome: data.nome, 
 		emailUser: data.emailUser,
