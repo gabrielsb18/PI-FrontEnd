@@ -1,7 +1,7 @@
 import { api } from "./api";
 
-function getMetrics() {
-    return api.get("/notes/totals")
+async function getMetrics() {
+    return await api.get("/notes/totals")
         .then((response) => {
             return response.data;
         }).catch((error) => {
