@@ -10,19 +10,19 @@ const updateUserSchema = z.object ({
     .email("Email invalido!"),
 
     senha:z.string().optional(),
-    senhaAntiga:z.string().optional()
+    senha_antiga:z.string().optional()
 
 }).refine(
     (data) => {
       if (data.senha) {
-        return !!data.senhaAntiga;
+        return !!data.senha_antiga;
       }
       return true;
     },
 
     {
       message: "Insira sua senha antiga",
-      path: ["senhaAntiga"],
+      path: ["senha_antiga"],
     }
 );;
 
