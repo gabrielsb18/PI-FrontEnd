@@ -44,6 +44,6 @@ export const InputWrap = styled.div`
 
 export const ErrorMessage = styled.span`
     color: #FF0130;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 350;
 `;
