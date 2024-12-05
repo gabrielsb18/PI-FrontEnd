@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { device } from "../../constants";
 
 export const ContainerBody = styled.div`
     display: flex;
@@ -11,19 +12,36 @@ export const ContainerBody = styled.div`
 export const Title = styled.div`
     width: 100%;
     font-size: 28px;
-    margin-bottom: 90px;
+    margin-bottom: 48px;
 
     > p {
         font-size: 14px;
         color: #A1A1A1;
         font-weight: 400;
     }
+
+    @media ${device.xs} {
+        font-size: 1em;
+        margin-bottom: 1.5rem;
+    }
+
+    @media ${device.sm}{
+        font-size: 14px;
+        margin-bottom: 24px;
+    }
+
+    @media ${device.md}{
+        font-size: 18px;
+    }
+
 `;
 
 export const FormContainer = styled.div`
     display: flex;
-    width:50%;
     height: 100vh;
+    flex: 1;
+    min-width:50%;
+    box-sizing: border-box;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -35,14 +53,15 @@ export const FormContainer = styled.div`
         display: flex;
         flex-direction: column;
         gap:50px;
-        padding: 32px;
-        min-width: 400px;
+        max-width: 400px;
+        width: 100%;
 
         > div:first-child {
             display: flex;
             flex-direction: column;
             justify-content: center;
             gap: 20px;
+            width: 100%;
 
             > label {
                 font-size: 16px;
@@ -66,6 +85,11 @@ export const FormContainer = styled.div`
             display: flex;
             flex-direction: column;
             gap: 26px;
+            width: 100%;
+        }
+
+        @media ${device.xs} {
+            padding: 0px 40px;
         }
     }
 `;
