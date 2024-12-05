@@ -14,6 +14,20 @@ async function getNotes() {
         })
 }
 
+async function postNote(data) {
+    return await api.post("/notes/", data)
+        .then((response) => {
+            return { sucess: true, data: response.data }
+        })
+        .catch((error) => {
+            if (error.response) {
+                return { sucess: false, msg: error.response.data.msg }
+            } else {
+                return { sucess: false, msg: "Erro ao criar nota" }
+            }
+        })
+}
+
 async function putNote(noteId, updatedNote) {
     return await api.put(`/notes/${noteId}`, updatedNote)
         .then((response) => {
@@ -61,4 +75,4 @@ async function searchNotes(searchTerm) {
 }
 
 
-export { getNotes, putNote, deleteNote, searchNotes };
+export { getNotes, postNote, putNote, deleteNote, searchNotes };
