@@ -32,10 +32,18 @@ export default function Home() {
     const [modalOpen, setModalOpen] = useState(false);
     const [currentNote, setCurrentNote] = useState(null);
     const [notes, setNotes] = useState([]);
-
+	const [filter, setFilter] = useState("todas");
     const [searchTerm, setSearchTerm] = useState("");
     const [isSearching, setIsSearching] = useState(false);
+	
     const debouncedSearch = useDebounce(searchTerm, 500);
+
+	const applyFilter = () => {
+        if (filter === "todas") {
+            return notes;
+        }
+        return notes.filter((note) => note.status === filter);
+    };
 
     const fetchNotes = async (searchTerm = "") => {
         try {
@@ -102,10 +110,10 @@ export default function Home() {
 		<ContainerBody>
 			<HeaderNav onSearch={handleSearch} />
 			{isSearching ? (
-                <SearchNotes
-                    updateNote={updateNote}
-                    deleteNote={deleteNote}
-                    notes={notes}
+				<SearchNotes
+					updateNote={updateNote}
+					deleteNote={deleteNote}
+					notes={notes}
 					modalOpen={modalOpen}
 					currentNote={currentNote}
 					setModalOpen={setModalOpen}
@@ -119,26 +127,26 @@ export default function Home() {
 						</h1>
 						<p>Adicione uma nova tarefa</p>
 					</HeaderTitle>
-					<Metrics/>
+					<Metrics />
 					<HeaderTasks>
 						<ContainerTitle>
 							<h1>Suas Tarefas</h1>
 							<ActionsButtons>
 								<AddTask />
-								<Select />
+								<Select filter={filter} setFilter={setFilter}/>
 							</ActionsButtons>
 						</ContainerTitle>
 					</HeaderTasks>
 
 					<ContainerTasks>
 						<ContainerCardsTasks>
-							{notes.map((note) => (
+							{applyFilter().map((note) => (
 								<CardTask
+									key={note._id}
 									title={note.titulo}
 									description={note.descricao}
 									status={note.status}
 									onClick={() => handleCardClick(note)}
-									key={note._id}
 								/>
 							))}
 						</ContainerCardsTasks>
