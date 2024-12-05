@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {ModalTask, ContainerModal, TitleTask, ContentTask, ButtonTrash, ButtonCloseNote, ContainerButtons, ActionsButtons, ButtonChecked } from "./CardTaskModal.style.js";
 import { toast } from "sonner";
 import { useAuth } from "../../contexts/AuthContext.jsx";
@@ -103,6 +103,17 @@ export function CardTaskModal ({title:initialTitle, content:initialContent, note
 			toast.error(error.message);
 		}
 	}
+    
+    useEffect(() => {
+		if (isOpen) {
+			document.body.style.overflow = "hidden";
+		} else {
+			document.body.style.overflow = "unset";
+		}
+		return () => {
+			document.body.style.overflow = "unset";
+		};
+	}, [isOpen]);
 
     if(!isOpen) return null;
 
