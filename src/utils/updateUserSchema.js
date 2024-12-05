@@ -21,7 +21,7 @@ const updateUserSchema = z.object ({
     },
 
     {
-      message: "Insira sua senha antiga",
+      message: "Insira sua senha atual",
       path: ["senha_antiga"],
     }
 );;
