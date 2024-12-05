@@ -9,7 +9,7 @@ export const ContainerBody = styled.div`
     color: #F0F0F0;
 `;
 
-export const MainContent = styled.div`
+export const MainContent = styled.form`
     display: flex;
     flex-direction: column;
     gap:44px;
