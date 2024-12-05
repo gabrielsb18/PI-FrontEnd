@@ -15,6 +15,7 @@ export const CardTasks = styled.div`
 
     background-color: #2F704C;
     transition: ease-out 0.2s;
+    white-space: normal; 
     
     background-color: ${({status}) => {
         if (status === 'pendente') return '#E0B73A';
@@ -47,7 +48,10 @@ export const CardTasks = styled.div`
         font-size: 14px;
         font-weight: 400;   
 
-        overflow-y: hidden;
+        overflow: hidden;
+        white-space: normal;
+        word-break: break-word;
+        overflow-wrap: break-word;
         text-overflow: ellipsis;
         white-space: normal;
 
