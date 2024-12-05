@@ -34,15 +34,18 @@
  
       
 </div>
-## Tecnologias utlizadas:
+
+ ## Tecnologias utlizadas:
+ 
 <div>
  <img src=	"https://img.shields.io/badge/JavaScript-F7DF1E.svg?style=for-the-badge&logo=JavaScript&logoColor=black">
  <img src=	"https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB">
  <img src=	"https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white">
  <img src= "https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white">
 </div>
-## Links:
-<div>
+
+ ## Links:
+ 
 <p>Quadro do Kandan:</p>
   <a href=""><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"></a>
 <p>Protótipo</p>
