@@ -52,10 +52,9 @@ export default function Cadastro() {
 			<FormContainer>
 				<Title>
 					<h1>
-						Bem vindo ao <br />
-						<strong>Notes</strong>
+						Bem vindo ao <strong> Notes</strong>
 					</h1>
-					<p>Cadastre- se para aproveitar ao máximo o Notes</p>
+					<p>Cadastre - se para aproveitar ao máximo o Notes</p>
 				</Title>
 
 				<form onSubmit={handleSubmit(onSignup)}>
