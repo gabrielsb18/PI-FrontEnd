@@ -53,19 +53,6 @@ export const InputWrapper = styled.div`
         color:#ffffff;
         font-size:16px;
     }
-    
-    > textarea{
-        width:100%;
-        height:176px;
-        text-align:flex-start; 
-        border:none;
-        resize:none;
-        border-radius:10px;
-        background-color:#414141;
-        padding:16px;
-        color:#ffffff;
-        font-size:16px;
-    }
 `;
 
 export const ContainerActionButtons = styled.div`
