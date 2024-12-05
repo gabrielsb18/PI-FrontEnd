@@ -24,6 +24,7 @@ import {
 	ContainerCardsTasks,
     ContainerTasks,
     BackgroundModal,
+	NoContent,
 } from "./Home.style";
 
 export default function Home() {
@@ -139,17 +140,24 @@ export default function Home() {
 					</HeaderTasks>
 
 					<ContainerTasks>
-						<ContainerCardsTasks>
-							{applyFilter().map((note) => (
-								<CardTask
-									key={note._id}
-									title={note.titulo}
-									description={note.descricao}
-									status={note.status}
-									onClick={() => handleCardClick(note)}
-								/>
-							))}
-						</ContainerCardsTasks>
+							{notes.length === 0 ? (
+								<NoContent>
+									<img src="/NoContent.png" alt="Nenhuma tarefa encontrada" />
+									<h2>Adicione uma tarefa nova</h2>
+								</NoContent>
+							) : (
+								<ContainerCardsTasks>
+									{applyFilter().map((note) => (
+										<CardTask
+											key={note._id}
+											title={note.titulo}
+											description={note.descricao}
+											status={note.status}
+											onClick={() => handleCardClick(note)}
+										/>
+									))}
+								</ContainerCardsTasks>	
+							)}
 						{currentNote && modalOpen && (
 							<>
 								<BackgroundModal onClick={handleCloseModal} />

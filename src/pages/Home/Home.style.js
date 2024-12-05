@@ -131,3 +131,29 @@ export const BackgroundModal = styled.div`
     margin: 0 auto;
     background-color: rgba(0, 0, 0, 0.4);
 `;
+
+export const NoContent = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    padding: 32px;
+    gap: 2rem;
+
+    > img {
+        max-width: 320px;
+        filter: contrast(0.8);
+        transition: ease-in-out 0.1s;
+
+        &:hover {
+            filter: contrast(0.7);
+        }
+    }
+
+    > h2 {
+        color: black;
+        font-size: 2em;
+    }
+`;
