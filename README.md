@@ -21,7 +21,7 @@
  
   #### 1) Clone o repositório através do link
   
-     git clone 'link_do_repositorio'
+     git clone 'https://github.com/gabrielsb18/PI-FrontEnd-IESB'
     
   #### 2) Navegue até a pasta PI-FrontEnd-IESB
   
@@ -31,6 +31,16 @@
      npm install
  #### 4) Digite o seguinte comando para rodar a aplicação
      npm run dev
+ #### 5) Em seguida crie um arquivo .env com as seguintes variaveis:
+      VITE_API_URL="http://localhost:3000"
+  
+  > [!IMPORTANT]  
+> É essencial que você já esteja com o back-end da aplicação configurado e rodando o localmente. [Clique aqui caso ainda não tenha configurado](https://github.com/gabrielsb18/PI-BackEnd-IESB).
+
+
+
+
+     
  
       
 </div>
