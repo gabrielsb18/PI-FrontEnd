@@ -7,7 +7,7 @@ import { api } from "../../services/api";
 export function ButtonProfile(){
     const {nome, emailUser, avatar} = useAuth();
 
-    const avatarUrl = avatar ? `${api.defaults.baseURL}/files/${avatar}` : placeholderImageUser;
+    const avatarUrl = avatar ? avatar : placeholderImageUser;
 
     return (
         <ContainerProfile >

@@ -39,7 +39,7 @@ export default function Perfil() {
     });
 
     useEffect(() => {
-        const avatarUrl = avatar ? `${api.defaults.baseURL}/files/${avatar}` : placeholderImageUser;
+        const avatarUrl = avatar ? avatar : placeholderImageUser;
         setAvatarUser(avatarUrl);
     }, [avatar]);
 
