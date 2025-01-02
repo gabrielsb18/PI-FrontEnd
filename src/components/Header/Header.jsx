@@ -1,27 +1,40 @@
 import { ButtonProfile } from "../ButtonProfile/ButtonProfile";
-import { Header } from "./Header.style";
+import { Header, LoginButton, WrapperTitle } from "./Header.style";
 import { SearchBar } from "../SearchBar/SearchBar";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../contexts/AuthContext";
 
 export default function HeaderNav({ showSearchBar = true, onSearch }) {
-	
-    const handleInputChange = (e) => {
-		onSearch(e.target.value);
-	};
+	const { acessToken } = useAuth();
 
 	return (
 		<Header>
 			<Link to="/home">
-				<img src="/IconLogo.svg" alt="Logo Notes" />
+				{acessToken ? (
+					<img src="/IconLogo.svg" alt="Logo Notes" />
+				) : (
+					<WrapperTitle>
+						<h1>Notes</h1>
+					</WrapperTitle>
+				)}
 			</Link>
 
 			{showSearchBar && (
 				<SearchBar
-					onChange={handleInputChange}
+					onChange={(e) => onSearch(e.target.value)}
 					placeholder="Pesquisar notas"
 				/>
 			)}
-			<ButtonProfile />
+
+			{acessToken ? (
+				<ButtonProfile />
+			) : (
+				<Link to="/login">
+					<LoginButton>
+						Login
+					</LoginButton>
+				</Link>
+			)}
 		</Header>
 	);
 }
