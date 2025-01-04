@@ -4,6 +4,7 @@ import { device } from "../../constants/index";
 export const ContainerBody = styled.div`
     background-color: #2a2a2a;
     min-height: 100vh;
+    overflow: none;
 `;
 
 export const Main = styled.main`
@@ -20,6 +21,34 @@ export const ApresentationSection = styled.section`
 `;
 
 export const CardsSection = styled.section`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-sizing: border-box;
+`;
+
+export const BGimage = styled.img`
+    max-width: 100vw;
+    position: relative;
+`;
+
+export const WrapperContent = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    padding-right: 160px;
+    padding-left: 160px;
+
+    > h1 {
+        color: #ffff;
+        font-size: 48px;
+
+        > strong {
+            color: #1CAF5D;
+        }
+    }
 `;
 
 export const MetricsSection = styled.section`
@@ -72,10 +101,14 @@ export const WrapperTitle = styled.div`
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    gap: 30px;
+    gap: 1.8rem;
     
     > h1 {
         color: #ffff;
         font-size: 48px;
+    }
+
+    > img {
+        max-width: 100%;
     }
 `;
