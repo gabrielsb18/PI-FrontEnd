@@ -23,14 +23,14 @@ export default function Lgpage() {
 			<Main>
 				<ApresentationSection>
                     <WrapperTitle>
-                        <h1><strong>Simples</strong>,rápido e intuitivo</h1>
+                        <h1><strong>Simples</strong>, rápido e intuitivo</h1>
                         <ButtonSignUp onClick={() => navigate("/cadastro")}>Cadastre-se</ButtonSignUp>
                     </WrapperTitle>
-                    <img src ="/Logo.svg" alt="Logo Notes"/>
+                    <img src ="/Logo-No-SpotLight.svg" alt="Logo Notes"/>
                 </ApresentationSection>
 
 				<CardsSection>
-					<BGimage src="BG-Section3.svg" alt="Scrools de cards horizontal"/>
+					<BGimage src="BG-Section-Cards.svg" alt="Scrools de cards horizontal"/>
 					<WrapperContent>
 						<h1>Controle suas <strong>tarefas e atividades</strong></h1>
 						<img src="BG-Exe-Cards.svg" alt="Imagem ilustrativa de cards de tarefas"/>
