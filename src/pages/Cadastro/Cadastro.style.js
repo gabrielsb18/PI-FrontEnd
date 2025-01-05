@@ -11,7 +11,7 @@ export const ContainerBody = styled.div`
 
 export const Title = styled.div`
     width: 100%;
-    font-size: 28px;
+    font-size: 24px;
     margin-bottom: 48px;
 
     > p {
@@ -52,7 +52,7 @@ export const FormContainer = styled.div`
     > form {
         display: flex;
         flex-direction: column;
-        gap:50px;
+        gap:32px;
         max-width: 400px;
         width: 100%;
 
@@ -60,17 +60,17 @@ export const FormContainer = styled.div`
             display: flex;
             flex-direction: column;
             justify-content: center;
-            gap: 20px;
+            gap: 18px;
             width: 100%;
 
             > label {
-                font-size: 16px;
+                font-size: 14px;
                 margin-bottom: -10px;
             }
 
             > a {
                 font-weight: 400;
-                font-size: 15px;
+                font-size: 16px;
                 text-decoration:none;
                 color: ${({ theme }) => theme.COLORS.BLACK};
             }
@@ -89,7 +89,7 @@ export const FormContainer = styled.div`
         }
 
         @media ${device.xs} {
-            padding: 0px 40px;
+            padding: 0px;
         }
     }
 `;
