@@ -4,7 +4,7 @@ import { device } from "../../constants/index";
 export const ContainerBody = styled.div`
     background-color: #2a2a2a;
     min-height: 100vh;
-    overflow: none;
+    overflow-x: hidden;
 `;
 
 export const Main = styled.main`
@@ -17,47 +17,20 @@ export const ApresentationSection = styled.section`
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 120px;
-`;
+    gap: 4rem;
+    flex-wrap: wrap;
+    padding-top: 120px;
+    padding-bottom: 120px;
 
-export const CardsSection = styled.section`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    box-sizing: border-box;
-`;
+    @media ${device.xs} {
+        gap: 0;
+    }
 
-export const BGimage = styled.img`
-    max-width: 100vw;
-    position: relative;
-`;
-
-export const WrapperContent = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    padding-right: 160px;
-    padding-left: 160px;
-
-    > h1 {
-        color: #ffff;
-        font-size: 48px;
-
-        > strong {
-            color: #1CAF5D;
+    @media ${device.sm} {        
+        > img {
+            display: none;
         }
     }
-`;
-
-export const MetricsSection = styled.section`
-`;
-
-export const SearchSection = styled.section`
-`;
-
-export const Footer = styled.footer`
 `;
 
 export const ButtonSignUp = styled.button`
@@ -108,7 +81,74 @@ export const WrapperTitle = styled.div`
         font-size: 48px;
     }
 
-    > img {
-        max-width: 100%;
+    @media ${device.xs} {
+        > h1 {
+            font-size: 24px;
+        }
     }
+`;
+
+export const CardsSection = styled.section`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-sizing: border-box;
+`;
+
+export const BGimage = styled.img`
+    width: 100vw;
+    position: relative;
+    max-height: 640px;
+`;
+
+export const WrapperContent = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    padding-right: 160px;
+    padding-left: 160px;
+
+    > h1 {
+        color: #ffff;
+        font-size: 48px;
+
+        > strong {
+            color: #1CAF5D;
+        }
+    }
+
+    @media ${device.xs} {
+        > img {
+            display: none;
+        }
+    }
+
+    @media ${device.sm} {
+        padding: 60px;
+
+        > h1 {
+            font-size: 24px;
+        }
+
+        > img {
+            width: 25%;
+        }   
+    }
+
+    @media ${device.md} {
+        > img {
+            width: 50%;
+        }
+    }
+`;
+
+export const MetricsSection = styled.section`
+`;
+
+export const SearchSection = styled.section`
+`;
+
+export const Footer = styled.footer`
 `;
