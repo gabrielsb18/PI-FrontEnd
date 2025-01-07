@@ -31,6 +31,12 @@ export const ApresentationSection = styled.section`
             display: none;
         }
     }
+
+    @media ${device.md} {
+        > img {
+            max-width: 25%;
+        }
+    }
 `;
 
 export const ButtonSignUp = styled.button`
@@ -84,6 +90,12 @@ export const WrapperTitle = styled.div`
     @media ${device.xs} {
         > h1 {
             font-size: 24px;
+        }
+    }
+
+    @media ${device.md} {
+        > h1 {
+            font-size: 28px;
         }
     }
 `;
@@ -174,7 +186,7 @@ export const WrapperGrid = styled.div`
     }
 
     @media ${device.xs} {
-        grid-template-columns: minmax(190px, 2fr) minmax(190px, 2fr);
+        grid-template-columns: minmax(190px, 2fr);
         grid-template-areas:
         "ContentText"
         "MonthsCompletedTasks"
@@ -279,6 +291,30 @@ export const ContentText = styled.div`
 `;
 
 export const SearchSection = styled.section`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 122px;
+    height: 700px;
+
+    > h1 {
+        text-align: center;
+        color: #ffff;
+        font-size: 48px;
+
+        > strong {
+            color: #ffd735;
+        }
+    }
+`;
+
+export const WrapperComponents = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 38px;
 `;
 
 export const Footer = styled.footer`

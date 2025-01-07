@@ -1,5 +1,7 @@
 import HeaderNav from "../../components/Header/Header";
 import { GrapicTasks } from "../../components/Metrics/GrapicTasks/GrapicTasks";
+import { SearchBar } from "../../components/SearchBar/SearchBar";
+import SelectButton from "../../components/Select/Select";
 import {
 	ContainerBody,
 	ApresentationSection,
@@ -13,6 +15,7 @@ import {
 	TotalPendingTasks,
 	GrapicCompletedTasks,
 	SearchSection,
+	WrapperComponents,
 	Footer,
 	BGimage,
 	WrapperContent,
@@ -76,7 +79,13 @@ export default function Lgpage() {
 					</WrapperGrid>
 				</MetricsSection>
 
-				<SearchSection></SearchSection>
+				<SearchSection>
+					<h1>Encontre suas <strong>ideias</strong> e anotações sem burocracia</h1>
+					<WrapperComponents>
+						<SearchBar placeholder="Encontrar tarefas" />
+						<SelectButton />
+					</WrapperComponents>
+				</SearchSection>
 			</Main>
 			<Footer />
 		</ContainerBody>
