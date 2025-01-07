@@ -145,6 +145,137 @@ export const WrapperContent = styled.div`
 `;
 
 export const MetricsSection = styled.section`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 120px;
+    padding-bottom: 120px;
+`;
+
+export const WrapperGrid = styled.div`
+    display: grid;
+    grid-template-columns: minmax(200px, 2fr) minmax(200px, 2fr) minmax(190px, 2fr);  
+	grid-template-rows: minmax(200px, 200px) minmax(200px, 200px);
+	grid-template-areas: 
+        "MonthsCompletedTasks ContentText ContentText"
+        "ContentGraphicTwo ContentGraphicTree none";
+            
+	gap: 18px;
+	justify-content: flex-start;
+	max-width: 100%;
+
+    @media ${device.sm} {
+        grid-template-columns: minmax(190px, 2fr) minmax(190px, 2fr);
+        grid-template-areas: 
+        "MonthsCompletedTasks MonthsCompletedTasks"
+        "ContentText"
+        "ContentGraphicTwo" "ContentGraphicTree";
+    }
+
+    @media ${device.xs} {
+        grid-template-columns: minmax(190px, 2fr) minmax(190px, 2fr);
+        grid-template-areas:
+        "ContentText"
+        "MonthsCompletedTasks"
+        "ContentGraphicTwo"
+        "ContentGraphicTree";
+    }
+`;
+
+export const GrapicCompletedTasks = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    grid-area: MonthsCompletedTasks;
+    border: 1px solid #979797;
+    border-radius:10px;
+    min-width: 100%;
+
+    > p {
+        padding: 20px;
+        font-size:16px;
+        color: #afafaf;
+        font-weight:300;
+    }
+`;
+
+export const TotalCompletedTasks =styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    grid-area: ContentGraphicTree;
+    border: 1px solid #979797;
+    padding:20px;
+    border-radius:10px;
+
+    > p {
+        font-size:16px;
+        color: #35FF89;
+        font-weight:300;
+
+        > strong {
+        margin-top: 20px;
+        color: #35FF89;
+        }
+    }
+
+    > h1 {
+        margin-top: 20px;
+        color: #35FF89;
+        font-size:64px;
+        
+    }
+`;
+
+export const TotalPendingTasks = styled.div`
+    display:flex;
+    flex-direction:column;
+    justify-content: space-around;
+    grid-area: ContentGraphicTwo;
+    border: 1px solid #979797;
+    padding:20px;
+    border-radius:10px;
+
+    > p {
+        font-size:16px;
+        color: #ffd735;
+        font-weight:300;
+
+    }
+
+    > h1 {
+        margin-top: 20px;
+        color: #ffd735;
+        font-size:64px
+    }
+`;
+
+export const ContentText = styled.div`
+    display: inline-block;
+    flex-direction:column;
+    justify-content: space-around;
+    grid-area: ContentText;
+    padding:20px;
+
+    border-radius:10px;
+    border: 2px solid white;
+    box-shadow: 0px 0px 4px 0px #979797;
+
+    > h1 {
+        margin-top: 20px;
+        color: #ffff;
+        font-size: 48px;
+
+        @media ${device.sm} {
+            font-size: 1.8em;
+        }
+
+        @media ${device.xs} {
+            padding: 0;
+            font-size: 1.4em;
+        }
+    }
 `;
 
 export const SearchSection = styled.section`
