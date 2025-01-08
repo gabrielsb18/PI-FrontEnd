@@ -1,4 +1,4 @@
-import HeaderNav from "../../components/Header/Header";
+import { HeaderNav } from "../../components/Header/Header";
 import { Input } from "../../components/Input/Input.jsx";
 import { MdOutlineEmail, MdOutlineLock } from "react-icons/md";
 import { FiCamera, FiUser } from "react-icons/fi";

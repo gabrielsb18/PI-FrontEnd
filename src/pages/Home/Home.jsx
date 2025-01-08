@@ -3,8 +3,8 @@ import { toast } from "sonner";
 import { useAuth } from "../../contexts/AuthContext.jsx";
 
 import AddTask from "../../components/AddTask/AddTask";
-import HeaderNav from "../../components/Header/Header";
-import Select from "../../components/Select/Select";
+import { HeaderNav } from "../../components/Header/Header";
+import { SelectButton } from "../../components/Select/Select";
 import { CardTask } from "../../components/CardTasks/CardTasks.jsx";
 import { ToastPopUp } from "../../components/Toast/Toast.jsx";
 import { SearchNotes } from "../../components/SearchNotes/SearchNotes.jsx";
@@ -134,7 +134,7 @@ export default function Home() {
 							<h1>Suas Tarefas</h1>
 							<ActionsButtons>
 								<AddTask />
-								<Select filter={filter} setFilter={setFilter}/>
+								<SelectButton filter={filter} setFilter={setFilter}/>
 							</ActionsButtons>
 						</ContainerTitle>
 					</HeaderTasks>

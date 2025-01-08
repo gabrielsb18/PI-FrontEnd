@@ -2,11 +2,12 @@ import { toast } from "sonner";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useNavigate } from "react-router-dom";
 
-import Header from "../../components/Header/Header";
+import { HeaderNav } from "../../components/Header/Header";
 import { Input } from "../../components/Input/Input";
 import { useForm } from "react-hook-form";
 import { createNoteschema } from "../../utils/notesSchema";
 import { postNote } from "../../services/notesService";
+import { TextArea } from "../../components/TextArea/TextArea";
 
 import {
 	ContainerBody,
@@ -17,7 +18,7 @@ import {
 	ButtonCancel,
 	ContainerActionButtons,
 } from "../NovaNota/NovaNota.styles";
-import { TextArea } from "../../components/TextArea/TextArea";
+
 
 export default function NovaNota() {
 
@@ -57,7 +58,7 @@ export default function NovaNota() {
 
 	return (
 		<ContainerBody>
-			<Header showSearchBar={false} />
+			<HeaderNav showSearchBar={false} />
 			<MainContent onSubmit={handleSubmit(onSubmit)}>
 				<HeaderTitle>
 					<h1>Nova Tarefa</h1>
