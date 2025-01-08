@@ -1,7 +1,9 @@
-import HeaderNav from "../../components/Header/Header";
+import { useNavigate } from "react-router-dom";
+import { HeaderNav } from "../../components/Header/Header";
 import { GrapicTasks } from "../../components/Metrics/GrapicTasks/GrapicTasks";
 import { SearchBar } from "../../components/SearchBar/SearchBar";
-import SelectButton from "../../components/Select/Select";
+import { Footer } from "../../components/Footer/Footer";
+import { SelectButton } from "../../components/Select/Select";
 import {
 	ContainerBody,
 	ApresentationSection,
@@ -16,12 +18,10 @@ import {
 	GrapicCompletedTasks,
 	SearchSection,
 	WrapperComponents,
-	Footer,
 	BGimage,
 	WrapperContent,
 	Main,
 } from "./Lpage.styles";
-import { useNavigate } from "react-router-dom";
 
 export default function Lgpage() {
 	const navigate = useNavigate();
@@ -66,13 +66,13 @@ export default function Lgpage() {
 						</ContentText>
 						<TotalCompletedTasks>
 							<p>
-								Tarefas <strong>concluidas</strong>
+								Tarefas <br/><strong>concluidas</strong>
 							</p>
 							<h1>+80</h1>
 						</TotalCompletedTasks>
 						<TotalPendingTasks>
 							<p>
-								Tarefas <strong>pendentes</strong>
+								Tarefas <br/><strong>pendentes</strong>
 							</p>
 							<h1>15</h1>
 						</TotalPendingTasks>
