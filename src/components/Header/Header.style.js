@@ -48,9 +48,8 @@ export const LoginButton = styled.button`
     }
 
     @media ${device.xs}{
-        max-width: 150px;
-        font-size: 1em;
-    } 
+        display: none;
+    }  
 `;
 
 export const WrapperTitle = styled.div`
