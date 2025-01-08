@@ -23,10 +23,12 @@ export const ApresentationSection = styled.section`
     padding-bottom: 120px;
 
     @media ${device.xs} {
-        gap: 0;
+        > img {
+            display: none;
+        }
     }
 
-    @media ${device.sm} {        
+    @media ${device.sm} {
         > img {
             display: none;
         }
@@ -277,16 +279,17 @@ export const ContentText = styled.div`
     > h1 {
         margin-top: 20px;
         color: #ffff;
-        font-size: 48px;
-
-        @media ${device.sm} {
-            font-size: 1.8em;
-        }
+        font-size: 52px;
 
         @media ${device.xs} {
             padding: 0;
             font-size: 1.4em;
         }
+
+        @media ${device.sm} {
+            font-size: 1.8em;
+        }
+
     }
 `;
 
@@ -301,10 +304,14 @@ export const SearchSection = styled.section`
     > h1 {
         text-align: center;
         color: #ffff;
-        font-size: 48px;
+        font-size: 64px;
 
         > strong {
             color: #ffd735;
+        }
+
+        @media ${device.xs} {
+            font-size: 38px;
         }
     }
 `;
@@ -315,7 +322,4 @@ export const WrapperComponents = styled.div`
     align-items: center;
     flex-wrap: wrap;
     gap: 38px;
-`;
-
-export const Footer = styled.footer`
 `;
