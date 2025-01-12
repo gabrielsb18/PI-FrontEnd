@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { device } from "../../constants/index";
 
 export const ContainerProfile = styled.button`
     display: flex;
@@ -18,6 +19,10 @@ export const ContainerProfile = styled.button`
 
     &:hover {
         border-color: #666;
+    }
+
+    @media ${device.xs} {
+        display: none;
     }
 `;
 
