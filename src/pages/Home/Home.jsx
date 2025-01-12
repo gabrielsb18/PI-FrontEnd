@@ -26,6 +26,7 @@ import {
     BackgroundModal,
 	NoContent,
 } from "./Home.style";
+import { SkeletonCards } from "../../components/Skeletons/SkeletonCards/SkeletonCards.jsx";
 
 export default function Home() {
     const { nome } = useAuth();
@@ -36,6 +37,7 @@ export default function Home() {
 	const [filter, setFilter] = useState("todas");
     const [searchTerm, setSearchTerm] = useState("");
     const [isSearching, setIsSearching] = useState(false);
+	const [loading,setLoading] = useState(false)
 	
     const debouncedSearch = useDebounce(searchTerm, 500);
 
@@ -47,7 +49,8 @@ export default function Home() {
     };
 
     const fetchNotes = async (searchTerm = "") => {
-        try {
+		setLoading(true)
+		try {
             if (searchTerm.trim() !== "") {
                 const response = await searchNotes(searchTerm);
 
@@ -73,7 +76,9 @@ export default function Home() {
             }
         } catch (error) {
            toast.error(error.message)
-        }
+        } finally {
+			setLoading(false)
+		}
     };
 
     useEffect(() => {
@@ -134,30 +139,31 @@ export default function Home() {
 							<h1>Suas Tarefas</h1>
 							<ActionsButtons>
 								<AddTask />
-								<SelectButton filter={filter} setFilter={setFilter}/>
+								<SelectButton
+									filter={filter}
+									setFilter={setFilter}
+								/>
 							</ActionsButtons>
 						</ContainerTitle>
 					</HeaderTasks>
 
 					<ContainerTasks>
-							{notes.length === 0 ? (
-								<NoContent>
-									<img src="/NoContent.png" alt="Nenhuma tarefa encontrada" />
-									<h2>Adicione uma tarefa nova</h2>
-								</NoContent>
+						<ContainerCardsTasks>
+							{loading ? (
+								<SkeletonCards count={20} />
 							) : (
-								<ContainerCardsTasks>
-									{applyFilter().map((note) => (
-										<CardTask
-											key={note._id}
-											title={note.titulo}
-											description={note.descricao}
-											status={note.status}
-											onClick={() => handleCardClick(note)}
-										/>
-									))}
-								</ContainerCardsTasks>	
+								applyFilter().map((note) => (
+									<CardTask
+										key={note._id}
+										title={note.titulo}
+										description={note.descricao}
+										status={note.status}
+										onClick={() => handleCardClick(note)}
+									/>
+								))
 							)}
+						</ContainerCardsTasks>
+
 						{currentNote && modalOpen && (
 							<>
 								<BackgroundModal onClick={handleCloseModal} />
@@ -172,6 +178,16 @@ export default function Home() {
 									content={currentNote.descricao}
 								/>
 							</>
+						)}
+
+						{notes.length === 0 && (
+							<NoContent>
+								<img
+									src="/NoContent.png"
+									alt="Nenhuma tarefa encontrada"
+								/>
+								<h2>Adicione uma tarefa nova</h2>
+							</NoContent>
 						)}
 					</ContainerTasks>
 				</Main>
