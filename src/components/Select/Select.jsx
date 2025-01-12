@@ -1,4 +1,4 @@
-import { ButtonSelect } from "./Select.style"
+import { ButtonSelect } from "./Select.style";
 
 function SelectButton({ filter, setFilter }){
     return(
@@ -16,4 +16,4 @@ function SelectButton({ filter, setFilter }){
       )
 }
 
-export default SelectButton;
+export { SelectButton };

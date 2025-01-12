@@ -1,25 +1,7 @@
 import { ContentGraphicsOne } from "./GrapicTasks.styles.js";
 import Chart from "../Chart/index.jsx";
-import { useEffect, useState } from "react";
-import { toast } from "sonner";
-import { getMetrics } from "../../../services/metricsService.js";
 
 export function GrapicTasks() {
-	const [analyticsDataState, setAnalyticsDataState] = useState();
-
-	useEffect(() => {
-		const fechTotalTasksBytype = async () => {
-			try {
-				const response = await getMetrics();
-				setAnalyticsDataState(response);
-			} catch (error) {
-				toast.error("Erro ao carregar os dados");
-			}
-		};
-
-		fechTotalTasksBytype();
-	}, []);
-
 	const options = {
 		title: {
 			text: "",

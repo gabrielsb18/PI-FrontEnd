@@ -3,8 +3,8 @@ import { Header, LoginButton, WrapperTitle } from "./Header.style";
 import { SearchBar } from "../SearchBar/SearchBar";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
-
-export default function HeaderNav({ showSearchBar = true, onSearch }) {
+ 
+function HeaderNav({ showSearchBar = true, onSearch }) {
 	const { acessToken } = useAuth();
 
 	return (
@@ -38,3 +38,6 @@ export default function HeaderNav({ showSearchBar = true, onSearch }) {
 		</Header>
 	);
 }
+
+
+export { HeaderNav };

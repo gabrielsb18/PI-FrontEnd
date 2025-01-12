@@ -1,7 +1,13 @@
 import { api } from "./api";
 
 async function getMetrics() {
-    return await api.get("/notes/totals")
+    const acessToken = localStorage.getItem("@Notes:token");
+
+    return await api.get("/notes/totals", {
+        headers: {
+            authorization: `Bearer ${JSON.parse(acessToken)}`,
+        },
+    })
         .then((response) => {
             return response.data;
         }).catch((error) => {
