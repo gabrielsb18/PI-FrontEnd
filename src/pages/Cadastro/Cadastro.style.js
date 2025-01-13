@@ -92,4 +92,8 @@ export const FormContainer = styled.div`
             padding: 0px;
         }
     }
+
+    @media ${device.sm} {
+        padding: 46px;
+    }
 `;
