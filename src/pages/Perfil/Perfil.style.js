@@ -95,6 +95,7 @@ export const ButtonSave = styled.button`
 	align-items: center;
 	justify-content: center;
 	margin-top: 40px;
+    margin-bottom: 10%;
 	
 	background-color: #414141;
 	color: #ffffff;
@@ -105,9 +106,5 @@ export const ButtonSave = styled.button`
 
     &:hover {
         filter: brightness(0.8);
-    }
-
-    @media ${device.lg}{
-        margin-bottom: 10%;
-    }
+    }    
 `;
