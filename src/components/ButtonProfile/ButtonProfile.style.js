@@ -22,7 +22,9 @@ export const ContainerProfile = styled.button`
     }
 
     @media ${device.xs} {
-        display: none;
+        padding: 0;
+        gap: 0;
+        border-radius: 100%;
     }
 `;
 
@@ -31,6 +33,10 @@ export const ContentProfile = styled.div`
     align-items: end;
     justify-content: center;
     flex-direction: column;
+
+    @media ${device.xs} {
+        display: none;
+    }
 `;
 
 export const ProfileName = styled.p`
