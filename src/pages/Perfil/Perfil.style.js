@@ -15,7 +15,7 @@ export const Main = styled.main`
 	gap: 1.75rem;
 	margin: 0 auto;
     margin-top: 4%;
-    height: 100vh;
+    height: 100%;
     max-height: 100%;
 
     @media ${device.xs}{
@@ -105,5 +105,9 @@ export const ButtonSave = styled.button`
 
     &:hover {
         filter: brightness(0.8);
+    }
+
+    @media ${device.lg}{
+        margin-bottom: 10%;
     }
 `;
